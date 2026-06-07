@@ -18,6 +18,8 @@
   --parchment:   #fdf9e4;
   --dark-warm:   #1a150e;
   --bronze:      #795130;
+  --sage-dark:   #2e3828;
+  --sage-mid:    #3d4e36;
 
   /* Legacy vars for BlogPost layout */
   --gray: 96, 115, 159;
@@ -33,9 +35,7 @@
 /* ── FILM GRAIN OVERLAY ── */
 .grain-overlay {
   position: fixed;
-  inset: -50%;
-  width: 300%;
-  height: 300%;
+  inset: 0;
   pointer-events: none;
   z-index: 40;
   opacity: 0.045;
@@ -44,11 +44,10 @@
   animation: grain-anim 3s steps(4) infinite;
 }
 @keyframes grain-anim {
-  0%   { transform: translate(0,    0   ); }
-  20%  { transform: translate(-6%,  -10%); }
-  40%  { transform: translate(-15%,  5% ); }
-  60%  { transform: translate( 5%,  -20%); }
-  80%  { transform: translate(-8%,   15%); }
+  0%   { background-position:   0px    0px; }
+  25%  { background-position: -42px  -58px; }
+  50%  { background-position: -85px   24px; }
+  75%  { background-position:  28px  -90px; }
 }
 
 /* ── BASE RESET ── */
