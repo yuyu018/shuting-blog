@@ -94,6 +94,7 @@ const featuredPosts = [
       </div>
 
     </div>
+    <div class="hero-bottom-fade" aria-hidden="true"></div>
   </section>
 
   <div class="section-divider">
@@ -262,9 +263,9 @@ const featuredPosts = [
     inset: 0;
     overflow: hidden;
     background:
-      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(232,168,76,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(106,140,110,0.08) 0%, transparent 55%),
-      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 40%, #faf5ec 100%);
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(232,168,76,0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(106,140,110,0.1) 0%, transparent 55%),
+      linear-gradient(160deg, #1a150e 0%, #221910 40%, #1c1610 100%);
   }
   .hero-bg::before {
     content: '';
@@ -272,7 +273,7 @@ const featuredPosts = [
     right: -80px; top: -80px;
     width: 560px; height: 560px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(232,168,76,0.09) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(232,168,76,0.18) 0%, transparent 70%);
   }
   .hero-bg::after {
     content: '';
@@ -280,7 +281,7 @@ const featuredPosts = [
     left: -100px; bottom: -100px;
     width: 400px; height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(181,114,106,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(181,114,106,0.12) 0%, transparent 70%);
   }
   .hero-inner {
     position: relative;
@@ -298,27 +299,27 @@ const featuredPosts = [
     gap: 8px;
     font-size: 0.78rem;
     font-weight: 500;
-    color: var(--amber);
+    color: var(--amber-light);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     padding: 0.35rem 0.9rem;
-    background: var(--amber-pale);
+    background: rgba(193,127,58,0.14);
     border-radius: 100px;
-    border: 1px solid rgba(193,127,58,0.2);
+    border: 1px solid rgba(232,168,76,0.3);
   }
   .hero-title {
     font-family: 'Noto Serif TC', serif;
     font-size: clamp(2.2rem, 4.5vw, 3.4rem);
     font-weight: 600;
-    color: var(--ink);
+    color: var(--parchment);
     line-height: 1.4;
     margin: 0 0 1.5rem;
     letter-spacing: 0.02em;
   }
   .hero-title em {
     font-style: normal;
-    color: var(--amber);
+    color: var(--amber-light);
     position: relative;
   }
   .hero-title em::after {
@@ -328,17 +329,26 @@ const featuredPosts = [
     height: 3px;
     background: linear-gradient(90deg, var(--amber-light), transparent);
     border-radius: 2px;
-    opacity: 0.6;
+    opacity: 0.5;
   }
   .hero-desc {
     font-family: 'Noto Serif TC', serif;
     font-size: 1.05rem;
-    color: var(--ink-muted);
+    color: rgba(253,249,228,0.68);
     line-height: 2;
     margin-bottom: 2.5rem;
     font-weight: 300;
   }
   .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero .btn-secondary {
+    border-color: rgba(253,249,228,0.3);
+    color: rgba(253,249,228,0.88);
+  }
+  .hero .btn-secondary:hover {
+    background: rgba(253,249,228,0.08);
+    border-color: rgba(253,249,228,0.65);
+    color: var(--parchment);
+  }
 
   .hero-visual { display: flex; justify-content: center; align-items: center; }
   .hero-bento {
@@ -366,9 +376,9 @@ const featuredPosts = [
   .hero-card:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
   .hero-card:nth-child(2) { grid-column: 2; grid-row: 1; }
   .hero-card:nth-child(3) { grid-column: 2; grid-row: 2; }
-  .hero-card--amber { background: linear-gradient(145deg, rgba(232,168,76,0.14), rgba(232,168,76,0.04)); border: 1px solid rgba(193,127,58,0.2); }
-  .hero-card--green  { background: linear-gradient(145deg, rgba(106,140,110,0.14), rgba(106,140,110,0.04)); border: 1px solid rgba(106,140,110,0.2); }
-  .hero-card--rose   { background: linear-gradient(145deg, rgba(181,114,106,0.14), rgba(181,114,106,0.04)); border: 1px solid rgba(181,114,106,0.2); }
+  .hero-card--amber { background: linear-gradient(145deg, rgba(232,168,76,0.18), rgba(232,168,76,0.06)); border: 1px solid rgba(232,168,76,0.28); }
+  .hero-card--green  { background: linear-gradient(145deg, rgba(106,140,110,0.18), rgba(106,140,110,0.06)); border: 1px solid rgba(106,140,110,0.28); }
+  .hero-card--rose   { background: linear-gradient(145deg, rgba(181,114,106,0.18), rgba(181,114,106,0.06)); border: 1px solid rgba(181,114,106,0.28); }
   .hero-card-num {
     position: absolute;
     top: 1rem; left: 1.25rem;
@@ -378,38 +388,45 @@ const featuredPosts = [
     letter-spacing: 0.08em;
     opacity: 0.45;
   }
-  .hero-card--amber .hero-card-num { color: var(--amber); }
-  .hero-card--green  .hero-card-num { color: var(--green-soft); }
-  .hero-card--rose   .hero-card-num { color: var(--rose-soft); }
+  .hero-card--amber .hero-card-num { color: var(--amber-light); }
+  .hero-card--green  .hero-card-num { color: #8ab08e; }
+  .hero-card--rose   .hero-card-num { color: #c89490; }
   .hero-card-decor {
     position: absolute;
     top: 50%; left: 50%;
     width: 68px; height: 68px;
     transform: translate(-50%, -58%);
-    opacity: 0.1;
+    opacity: 0.18;
     transition: opacity 0.25s, transform 0.25s;
   }
   .hero-card:nth-child(2) .hero-card-decor,
   .hero-card:nth-child(3) .hero-card-decor { width: 44px; height: 44px; }
-  .hero-card:hover .hero-card-decor { opacity: 0.2; transform: translate(-50%, -64%); }
-  .hero-card--amber .hero-card-decor { color: var(--amber); }
-  .hero-card--green  .hero-card-decor { color: var(--green-soft); }
-  .hero-card--rose   .hero-card-decor { color: var(--rose-soft); }
+  .hero-card:hover .hero-card-decor { opacity: 0.35; transform: translate(-50%, -64%); }
+  .hero-card--amber .hero-card-decor { color: var(--amber-light); }
+  .hero-card--green  .hero-card-decor { color: #8ab08e; }
+  .hero-card--rose   .hero-card-decor { color: #c89490; }
   .hero-card-body { position: relative; }
   .hero-card-name {
     font-family: 'Noto Serif TC', serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--parchment);
     margin: 0 0 0.25rem;
     letter-spacing: 0.02em;
   }
   .hero-card:nth-child(1) .hero-card-name { font-size: 1.05rem; }
   .hero-card-sub {
     font-size: 0.7rem;
-    color: var(--ink-muted);
+    color: rgba(253,249,228,0.52);
     margin: 0;
     letter-spacing: 0.03em;
+  }
+  .hero-bottom-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, var(--paper));
+    pointer-events: none;
   }
 
   /* ── POSTS ── */
@@ -494,14 +511,18 @@ const featuredPosts = [
   }
 
   /* ── QUOTE ── */
-  .quote-section { padding: 5rem 2rem; text-align: center; }
+  .quote-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: var(--dark-warm);
+  }
   .quote-inner   { max-width: 800px; margin: 0 auto; }
   .quote-mark {
     font-family: 'Lora', serif;
     font-size: 6rem;
     line-height: 0.6;
-    color: var(--amber);
-    opacity: 0.18;
+    color: var(--amber-light);
+    opacity: 0.35;
     display: block;
     margin-bottom: 1rem;
     user-select: none;
@@ -510,7 +531,7 @@ const featuredPosts = [
     font-family: 'Lora', serif;
     font-size: clamp(1.3rem, 2.5vw, 1.9rem);
     font-style: italic;
-    color: var(--ink);
+    color: var(--parchment);
     line-height: 1.7;
     margin: 0 auto 1.5rem;
     font-weight: 400;
@@ -520,7 +541,7 @@ const featuredPosts = [
   }
   .quote-author {
     font-size: 0.82rem;
-    color: var(--ink-muted);
+    color: rgba(253,249,228,0.48);
     letter-spacing: 0.08em;
     margin: 0;
   }
@@ -733,7 +754,7 @@ const featuredPosts = [
   /* ── QUOTE 引號放大進場 ── */
   @keyframes quoteMark {
     from { opacity: 0; transform: scale(0.4) translateY(16px); }
-    to   { opacity: 0.18; transform: scale(1) translateY(0); }
+    to   { opacity: 0.35; transform: scale(1) translateY(0); }
   }
   .quote-mark.is-visible {
     animation: quoteMark 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;

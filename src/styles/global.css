@@ -15,6 +15,9 @@
   --green-pale:  #eef4ed;
   --rose-soft:   #b5726a;
   --rose-pale:   #fdf0ee;
+  --parchment:   #fdf9e4;
+  --dark-warm:   #1a150e;
+  --bronze:      #795130;
 
   /* Legacy vars for BlogPost layout */
   --gray: 96, 115, 159;
@@ -25,6 +28,27 @@
     0 2px 6px rgba(var(--gray), 25%),
     0 8px 24px rgba(var(--gray), 33%),
     0 16px 32px rgba(var(--gray), 33%);
+}
+
+/* ── FILM GRAIN OVERLAY ── */
+.grain-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 300%;
+  height: 300%;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.045;
+  background: url('/grain.svg') repeat;
+  background-size: 200px 200px;
+  animation: grain-anim 3s steps(4) infinite;
+}
+@keyframes grain-anim {
+  0%   { transform: translate(0,    0   ); }
+  20%  { transform: translate(-6%,  -10%); }
+  40%  { transform: translate(-15%,  5% ); }
+  60%  { transform: translate( 5%,  -20%); }
+  80%  { transform: translate(-8%,   15%); }
 }
 
 /* ── BASE RESET ── */
