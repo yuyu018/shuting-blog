@@ -1,17 +1,26 @@
 ---
 interface Props {
-	date: Date;
+  date: Date;
 }
 
 const { date } = Astro.props;
+
+const formatted = date.toLocaleDateString('zh-TW', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+<time datetime={date.toISOString()} class="formatted-date">
+  {formatted}
 </time>
+
+<style>
+  .formatted-date {
+    font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-muted, #7a6e60);
+    letter-spacing: 0.04em;
+  }
+</style>

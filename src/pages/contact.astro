@@ -1,0 +1,360 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout title="聯絡資訊 — 曾淑婷的文學天地" description="與曾淑婷聯絡，歡迎合作邀約、讀者交流或任何想法分享">
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="contact-hero-inner">
+      <span class="section-label">聯絡資訊</span>
+      <h1 class="contact-hero-title">讓我們開始<em>對話</em></h1>
+      <p class="contact-hero-desc">
+        無論是合作邀約、讀者回饋，還是單純想聊聊書與投資，<br />
+        都歡迎寫信給我。每一封信我都會親自閱讀。
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════ -->
+  <section class="contact-section">
+    <div class="contact-inner">
+
+      <!-- 左：聯絡方式 -->
+      <div class="contact-info">
+
+        <div class="info-card">
+          <div class="info-icon">✉️</div>
+          <div>
+            <h3 class="info-title">電子郵件</h3>
+            <p class="info-desc">最直接的聯絡方式，通常在 2–3 個工作天內回覆。</p>
+            <a href="mailto:hello@example.com" class="info-link">hello@example.com</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📝</div>
+          <div>
+            <h3 class="info-title">合作邀約</h3>
+            <p class="info-desc">演講、課程、文章合作或品牌業配，歡迎附上相關資訊。</p>
+            <a href="mailto:collab@example.com" class="info-link">collab@example.com</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🐦</div>
+          <div>
+            <h3 class="info-title">社群媒體</h3>
+            <p class="info-desc">日常思考片段與閱讀紀錄，歡迎追蹤互動。</p>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="info-link">@shuting_writes</a>
+          </div>
+        </div>
+
+        <div class="info-note">
+          <span class="info-note-icon">💡</span>
+          <p>若是讀者問題或文章回饋，也可以直接在文章底部留言，我同樣會看到。</p>
+        </div>
+
+      </div>
+
+      <!-- 右：表單 -->
+      <div class="contact-form-wrap">
+        <h2 class="form-title">傳送訊息</h2>
+        <p class="form-subtitle">填寫以下表單，我會盡快與你聯繫。</p>
+
+        <form class="contact-form" name="contact" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">姓名</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="你的名字" required />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">電子郵件</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">主旨</label>
+            <select id="subject" name="subject" class="form-select">
+              <option value="">請選擇聯絡類型</option>
+              <option value="reader">讀者回饋</option>
+              <option value="collab">合作邀約</option>
+              <option value="invest">投資話題交流</option>
+              <option value="fitness">健身話題交流</option>
+              <option value="literature">文學話題交流</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">訊息內容</label>
+            <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="請輸入你想說的話..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            送出訊息
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  /* ── 共用 ── */
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── HERO ── */
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+  }
+  .contact-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,168,76,0.1) 0%, transparent 60%),
+      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
+  }
+  .contact-hero-inner {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .contact-hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0.5rem 0 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .contact-hero-title em {
+    font-style: normal;
+    color: var(--amber);
+    position: relative;
+  }
+  .contact-hero-title em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber-light), transparent);
+    border-radius: 2px;
+    opacity: 0.5;
+  }
+  .contact-hero-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 2;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* ── CONTACT SECTION ── */
+  .contact-section {
+    padding: 4rem 2rem 6rem;
+  }
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ── INFO CARDS ── */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .info-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.4rem 1.5rem;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(193,127,58,0.1);
+    box-shadow: 0 2px 16px rgba(100,70,30,0.05);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(100,70,30,0.09);
+  }
+  .info-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .info-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.35rem;
+  }
+  .info-desc {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin: 0 0 0.5rem;
+  }
+  .info-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--amber);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .info-link:hover { color: #b06e2a; }
+
+  .info-note {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+    background: var(--amber-pale);
+    border-radius: 12px;
+    border: 1px solid rgba(193,127,58,0.15);
+  }
+  .info-note-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .info-note p {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── FORM ── */
+  .contact-form-wrap {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2.5rem;
+    border: 1px solid rgba(193,127,58,0.1);
+    box-shadow: 0 8px 48px rgba(100,70,30,0.07);
+  }
+  .form-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+  }
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin: 0 0 2rem;
+    line-height: 1.6;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 0.7rem 1rem;
+    border: 1.5px solid rgba(193,127,58,0.2);
+    border-radius: 10px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.875rem;
+    color: var(--ink);
+    background: var(--paper);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(193,127,58,0.1);
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: rgba(122,110,96,0.45); }
+  .form-select { appearance: none; cursor: pointer; }
+  .form-textarea { resize: vertical; min-height: 140px; line-height: 1.7; }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.85rem 2rem;
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 16px rgba(193,127,58,0.3);
+    letter-spacing: 0.03em;
+    align-self: flex-start;
+  }
+  .form-submit:hover {
+    background: #b06e2a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(193,127,58,0.38);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form-wrap { padding: 1.75rem 1.25rem; }
+    .form-submit { align-self: stretch; }
+  }
+</style>

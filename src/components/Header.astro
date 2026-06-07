@@ -1,85 +1,361 @@
 ---
-import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://m.webtoo.ls/@astro" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-					></path></svg
-				>
-			</a>
-			<a href="https://twitter.com/astrodotbuild" target="_blank">
-				<span class="sr-only">Follow Astro on Twitter</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-					></path></svg
-				>
-			</a>
-			<a href="https://github.com/withastro/astro" target="_blank">
-				<span class="sr-only">Go to Astro's GitHub repo</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
-			</a>
-		</div>
-	</nav>
-</header>
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
+<header class="navbar">
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+      曾淑婷<span class="nav-logo-dot"></span>文學天地
+    </a>
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
+    <!-- Desktop Nav -->
+    <nav>
+      <ul class="nav-links">
+        <li><HeaderLink href="/" class="nav-item">首頁</HeaderLink></li>
+        <li><HeaderLink href="/services" class="nav-item">服務項目</HeaderLink></li>
+
+        <!-- 精選文章 Dropdown -->
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            精選文章
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <a href="/blog/investment" role="menuitem">
+              <span class="dropdown-dot" style="background:#c17f3a;"></span>
+              投資策略分析
+            </a>
+            <a href="/blog/fitness" role="menuitem">
+              <span class="dropdown-dot" style="background:#6a8c6e;"></span>
+              科學健身指導
+            </a>
+            <a href="/blog/literature" role="menuitem">
+              <span class="dropdown-dot" style="background:#b5726a;"></span>
+              知識文學分享
+            </a>
+          </div>
+        </li>
+
+        <li><HeaderLink href="/about" class="nav-item">關於我們</HeaderLink></li>
+        <li><HeaderLink href="/contact" class="nav-item">聯絡資訊</HeaderLink></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-links">
+      <li><a href="/">首頁</a></li>
+      <li><a href="/services">服務項目</a></li>
+      <li class="mobile-group-label">精選文章</li>
+      <li><a href="/blog/investment" class="mobile-sub">📈 投資策略分析</a></li>
+      <li><a href="/blog/fitness" class="mobile-sub">🌿 科學健身指導</a></li>
+      <li><a href="/blog/literature" class="mobile-sub">📚 知識文學分享</a></li>
+      <li><a href="/about">關於我們</a></li>
+      <li><a href="/contact">聯絡資訊</a></li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  /* ── NAVBAR SHELL ── */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 246, 239, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(193, 127, 58, 0.15);
+    transition: box-shadow 0.3s ease;
+    font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  }
+  .navbar.scrolled {
+    box-shadow: 0 4px 28px rgba(150, 100, 50, 0.09);
+  }
+
+  /* ── INNER LAYOUT ── */
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ── LOGO ── */
+  .nav-logo {
+    font-family: 'Noto Serif TC', 'Songti TC', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    transition: color 0.25s;
+    white-space: nowrap;
+  }
+  .nav-logo:hover { color: var(--amber); }
+  .nav-logo-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    margin: 0 5px 2px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .nav-logo:hover .nav-logo-dot {
+    transform: scale(1.5);
+  }
+
+  /* ── DESKTOP NAV LIST ── */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* nav items (covers both <a> from HeaderLink and dropdown button) */
+  .nav-links :global(a.nav-item),
+  .nav-dropdown-btn {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 9px;
+    transition: color 0.2s ease, background 0.2s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.025em;
+    font-family: inherit;
+    line-height: 1;
+  }
+  .nav-links :global(a.nav-item:hover),
+  .nav-links :global(a.nav-item.active),
+  .nav-dropdown-btn:hover {
+    color: var(--amber);
+    background: rgba(193, 127, 58, 0.08);
+  }
+  /* Astro HeaderLink active class */
+  .nav-links :global(a[aria-current="page"]) {
+    color: var(--amber);
+    background: rgba(193, 127, 58, 0.08);
+  }
+
+  /* ── DROPDOWN ── */
+  .nav-dropdown {
+    position: relative;
+  }
+  .nav-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav-dropdown-btn svg {
+    transition: transform 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
+    opacity: 0.7;
+  }
+  .nav-dropdown:hover .nav-dropdown-btn svg,
+  .nav-dropdown:focus-within .nav-dropdown-btn svg {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px) scaleY(0.94);
+    transform-origin: top center;
+    opacity: 0;
+    pointer-events: none;
+    min-width: 172px;
+    background: rgba(253, 250, 244, 0.97);
+    border: 1px solid rgba(193, 127, 58, 0.18);
+    border-radius: 16px;
+    box-shadow:
+      0 4px 6px rgba(100, 70, 30, 0.04),
+      0 16px 48px rgba(100, 70, 30, 0.12);
+    padding: 0.55rem;
+    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.34, 1.1, 0.64, 1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scaleY(1);
+    pointer-events: auto;
+  }
+
+  .dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0.55rem 0.9rem;
+    border-radius: 9px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s ease, color 0.18s ease;
+    letter-spacing: 0.02em;
+  }
+  .dropdown-menu a:hover {
+    background: var(--amber-pale);
+    color: var(--amber);
+  }
+  .dropdown-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
+
+  /* ── HAMBURGER (mobile) ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .hamburger:hover { background: rgba(193, 127, 58, 0.08); }
+  .hamburger span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--ink-soft);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(250, 246, 239, 0.97);
+    border-top: 1px solid rgba(193, 127, 58, 0.1);
+  }
+  .mobile-menu.open {
+    max-height: 480px;
+  }
+  .mobile-links {
+    list-style: none;
+    margin: 0;
+    padding: 0.75rem 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .mobile-links a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-radius: 9px;
+    transition: background 0.18s, color 0.18s;
+    letter-spacing: 0.02em;
+  }
+  .mobile-links a:hover {
+    background: var(--amber-pale);
+    color: var(--amber);
+  }
+  .mobile-links a.mobile-sub {
+    padding-left: 1.4rem;
+    font-size: 0.84rem;
+    color: var(--ink-muted);
+  }
+  .mobile-group-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(122, 110, 96, 0.5);
+    padding: 0.75rem 0.75rem 0.25rem;
+    margin-top: 0.25rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: block; }
+  }
 </style>
+
+<script>
+  // ── Scroll shadow ──
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  // ── Mobile hamburger toggle ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu?.classList.toggle('open', isOpen);
+    mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!navbar?.contains(e.target as Node)) {
+      hamburger?.classList.remove('open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.remove('open');
+      mobileMenu?.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Close mobile menu on nav link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>

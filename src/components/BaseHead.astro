@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
@@ -8,50 +6,155 @@ import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: ImageMetadata;
+  title: string;
+  description: string;
+  image?: ImageMetadata;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const { title, description, image = FallbackImage } = Astro.props;
 ---
 
-<!-- Global Metadata -->
+<!-- Charset & Viewport -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
+
+<!-- Sitemap & RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL('rss.xml', Astro.site)}
 />
+
+<!-- Generator -->
 <meta name="generator" content={Astro.generator} />
 
+<!-- Astro Font (保留原有設定) -->
 <Font cssVariable="--font-atkinson" preload />
 
-<!-- Canonical URL -->
+<!-- Google Fonts：設計系統字體 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+TC:wght@300;400;500&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Primary Meta Tags -->
+<!-- Primary Meta -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:site_name" content={SITE_TITLE} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- 設計系統 CSS 變數與全域樣式 -->
+<style is:global>
+  :root {
+    --ink:         #2c2416;
+    --ink-soft:    #4a3f30;
+    --ink-muted:   #7a6e60;
+    --paper:       #faf6ef;
+    --paper-warm:  #f5ede0;
+    --paper-deep:  #ede3d4;
+    --amber:       #c17f3a;
+    --amber-light: #e8a84c;
+    --amber-pale:  #fdf0d8;
+    --green-soft:  #6a8c6e;
+    --green-pale:  #eef4ed;
+    --rose-soft:   #b5726a;
+    --rose-pale:   #fdf0ee;
+
+    /* 保留原有 Astro 模板變數，避免 blog layout 壞掉 */
+    --gray: 96, 115, 159;
+    --gray-light: 229, 233, 240;
+    --gray-dark: 34, 41, 57;
+    --gray-gradient: rgba(var(--gray-light), 50%), #fff;
+    --box-shadow:
+      0 2px 6px rgba(var(--gray), 25%),
+      0 8px 24px rgba(var(--gray), 33%),
+      0 16px 32px rgba(var(--gray), 33%);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    background-color: var(--paper);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23faf6ef'/%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23e8ddd0' opacity='0.4'/%3E%3Ccircle cx='3' cy='3' r='0.6' fill='%23e8ddd0' opacity='0.3'/%3E%3C/svg%3E");
+    color: var(--ink-soft);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 螢幕閱讀器專用 */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* 文章內文排版 */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif TC', serif;
+    color: var(--ink);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  a {
+    color: var(--amber);
+    text-decoration-color: rgba(193, 127, 58, 0.3);
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+  a:hover {
+    color: #b06e2a;
+    text-decoration-color: rgba(176, 110, 42, 0.6);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  p {
+    line-height: 1.85;
+  }
+</style>

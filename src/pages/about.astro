@@ -1,63 +1,549 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<PageLayout title="關於我 — 曾淑婷的文學天地" description="認識曾淑婷：一個在投資、健身與文學三個領域深耕的創作者">
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-inner">
+      <div class="about-hero-portrait">
+        <div class="portrait-frame">🌸</div>
+        <span class="portrait-badge">作者 · 淑婷</span>
+      </div>
+      <div class="about-hero-text">
+        <span class="section-label">關於我</span>
+        <h1 class="about-hero-title">
+          曾淑婷<em>——</em><br />
+          用文字丈量<br />生命的寬度
+        </h1>
+        <p class="about-hero-desc">
+          投資人、健身愛好者、書蟲。相信複利不只發生在財富裡，也發生在每一天微小而持續的成長中。
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">📈 價值投資</span>
+          <span class="about-tag">🏋️ 肌力訓練</span>
+          <span class="about-tag">📚 文學閱讀</span>
+          <span class="about-tag">✍️ 深度寫作</span>
+          <span class="about-tag">🧠 思維框架</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+  <!-- ══════════════════════════════════
+       STORY
+  ══════════════════════════════════ -->
+  <section class="story-section">
+    <div class="story-inner">
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+      <div class="story-block">
+        <div class="story-icon-col">
+          <div class="story-icon">✦</div>
+          <div class="story-line"></div>
+        </div>
+        <div class="story-content">
+          <h2 class="story-title">我的起點</h2>
+          <p class="story-text">
+            從小就是個愛看書的孩子，課本以外的書永遠比課本讀得認真。那時候還不知道，這個習慣會成為日後所有事情的底色。
+          </p>
+          <p class="story-text">
+            大學時期接觸投資，第一次感受到「讓錢替你工作」的震撼。但真正改變我的，不是某一次獲利，而是在巴菲特的股東信裡讀到的那句話——<em>「時間是優秀企業的朋友，卻是平庸企業的敵人。」</em>從那天起，我開始用長期的眼光看待生命中的每一件事。
+          </p>
+        </div>
+      </div>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+      <div class="story-block">
+        <div class="story-icon-col">
+          <div class="story-icon">🌱</div>
+          <div class="story-line"></div>
+        </div>
+        <div class="story-content">
+          <h2 class="story-title">三個領域，一個信念</h2>
+          <p class="story-text">
+            投資教會我耐心與機率思維；健身教會我漸進與一致性；文學教會我換位思考與語言的精準。表面上看是三件毫無關聯的事，但我逐漸發現它們共享同一個內核：
+          </p>
+          <blockquote class="story-quote">
+            真正的成長，從來都不是爆發式的。它是每一天微小行動的複利，靜悄悄地，在你看不見的地方累積。
+          </blockquote>
+          <p class="story-text">
+            這個部落格，就是我把這個信念寫下來的地方。
+          </p>
+        </div>
+      </div>
+
+      <div class="story-block">
+        <div class="story-icon-col">
+          <div class="story-icon">📖</div>
+        </div>
+        <div class="story-content">
+          <h2 class="story-title">為什麼寫作</h2>
+          <p class="story-text">
+            寫作對我來說，是一種整理思緒的儀式。當我把一個想法寫成文字，它就從模糊變得清晰，從飄動變得有重量。每一篇文章，都是我與自己的一次對話，也是我想遞給你的一封信。
+          </p>
+          <p class="story-text">
+            如果你在這裡找到了一點共鳴，或者帶走了一個新的角度看事情，那就是這個部落格存在最好的理由。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       NUMBERS
+  ══════════════════════════════════ -->
+  <section class="numbers-section">
+    <div class="section-inner">
+      <div class="numbers-grid">
+        <div class="number-item">
+          <span class="number-value">10+</span>
+          <span class="number-label">年投資經驗</span>
+        </div>
+        <div class="number-item">
+          <span class="number-value">300+</span>
+          <span class="number-label">本閱讀書目</span>
+        </div>
+        <div class="number-item">
+          <span class="number-value">5年</span>
+          <span class="number-label">規律訓練</span>
+        </div>
+        <div class="number-item">
+          <span class="number-value">100+</span>
+          <span class="number-label">篇原創文章</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       INTERESTS
+  ══════════════════════════════════ -->
+  <section class="interests-section">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-label">我的三個世界</span>
+        <h2 class="section-title">深耕的領域</h2>
+      </div>
+      <div class="interests-grid">
+
+        <div class="interest-card">
+          <div class="interest-icon">📈</div>
+          <h3 class="interest-title">投資策略</h3>
+          <p class="interest-desc">
+            以價值投資為核心，研究企業護城河與長期競爭力。相信好的投資決策，本質上是對未來的深度理解，而非對市場的短期預測。
+          </p>
+          <a href="/blog/investment" class="interest-link">
+            閱讀投資文章
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <div class="interest-card interest-card--green">
+          <div class="interest-icon">🌿</div>
+          <h3 class="interest-title">科學健身</h3>
+          <p class="interest-desc">
+            以運動科學為基礎，實踐漸進超負荷與週期化訓練。身體是最誠實的鏡子，它從不說謊，也從不辜負你真正付出的努力。
+          </p>
+          <a href="/blog/fitness" class="interest-link interest-link--green">
+            閱讀健身文章
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <div class="interest-card interest-card--rose">
+          <div class="interest-icon">📚</div>
+          <h3 class="interest-title">知識文學</h3>
+          <p class="interest-desc">
+            橫跨古典文學、當代小說與知識讀物。閱讀不是逃避，而是以最低的成本，進入另一個人的整個人生，借用他的眼睛看世界。
+          </p>
+          <a href="/blog/literature" class="interest-link interest-link--rose">
+            閱讀文學文章
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       CTA
+  ══════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <span class="cta-icon" aria-hidden="true">💌</span>
+      <h2 class="cta-title">一起走這條路</h2>
+      <p class="cta-desc">
+        如果你也在尋找財富、健康與精神的平衡，歡迎訂閱電子報，或者直接來找我聊聊。
+      </p>
+      <div class="cta-buttons">
+        <a href="/contact" class="btn-primary">聯絡我</a>
+        <a href="/blog" class="btn-secondary">逛逛文章</a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  /* ── 共用 ── */
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+  .section-header { margin-bottom: 3.5rem; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.8rem;
+    background: var(--amber);
+    color: #fff;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 16px rgba(193,127,58,0.3);
+    letter-spacing: 0.03em;
+  }
+  .btn-primary:hover {
+    background: #b06e2a;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(193,127,58,0.38);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.8rem;
+    border: 1.5px solid rgba(193,127,58,0.4);
+    color: var(--amber);
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .btn-secondary:hover {
+    background: var(--amber-pale);
+    border-color: var(--amber);
+    color: var(--amber);
+    transform: translateY(-2px);
+  }
+
+  /* ── ABOUT HERO ── */
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 5rem;
+  }
+  .about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 80% 20%, rgba(232,168,76,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 10% 90%, rgba(181,114,106,0.07) 0%, transparent 55%),
+      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
+  }
+  .about-hero-inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-hero-portrait { position: relative; flex-shrink: 0; }
+  .portrait-frame {
+    width: 260px;
+    aspect-ratio: 3/4;
+    border-radius: 28px;
+    background: linear-gradient(135deg, var(--paper-deep), var(--paper-warm));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(193,127,58,0.15);
+    box-shadow: 0 20px 70px rgba(100,70,30,0.13);
+    font-size: 5rem;
+  }
+  .portrait-badge {
+    position: absolute;
+    bottom: -14px; right: -14px;
+    background: var(--amber);
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.5rem 1.1rem;
+    border-radius: 100px;
+    box-shadow: 0 4px 16px rgba(193,127,58,0.35);
+    letter-spacing: 0.04em;
+  }
+  .about-hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0.5rem 0 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .about-hero-title em {
+    font-style: normal;
+    color: var(--amber);
+    opacity: 0.6;
+  }
+  .about-hero-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 2;
+    font-weight: 300;
+    margin: 0 0 2rem;
+    max-width: 520px;
+  }
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .about-tag {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.7);
+    color: var(--ink-soft);
+    border: 1px solid rgba(193,127,58,0.18);
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── STORY ── */
+  .story-section {
+    padding: 5rem 2rem;
+    background: #fff;
+  }
+  .story-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .story-block {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 2rem;
+  }
+  .story-icon-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+  }
+  .story-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--amber-pale);
+    border: 1px solid rgba(193,127,58,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    color: var(--amber);
+    font-weight: 700;
+  }
+  .story-line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(193,127,58,0.2), transparent);
+    margin: 0.5rem 0;
+    min-height: 2.5rem;
+  }
+  .story-content {
+    padding-bottom: 3.5rem;
+  }
+  .story-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0.3rem 0 1rem;
+    letter-spacing: 0.02em;
+  }
+  .story-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    color: var(--ink-muted);
+    line-height: 2;
+    font-weight: 300;
+    margin: 0 0 1rem;
+  }
+  .story-text em {
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+  .story-quote {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin: 1.5rem 0;
+    padding: 1.2rem 1.5rem;
+    border-left: 3px solid var(--amber);
+    background: var(--amber-pale);
+    border-radius: 0 12px 12px 0;
+  }
+
+  /* ── NUMBERS ── */
+  .numbers-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f5ede0 0%, #ede3d4 100%);
+  }
+  .numbers-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .number-item {}
+  .number-value {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .number-label {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* ── INTERESTS ── */
+  .interests-section {
+    padding: 5rem 2rem;
+  }
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .interest-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(193,127,58,0.12);
+    box-shadow: 0 4px 24px rgba(100,70,30,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .interest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(100,70,30,0.11);
+  }
+  .interest-card--green { border-color: rgba(106,140,110,0.15); }
+  .interest-card--rose  { border-color: rgba(181,114,106,0.15); }
+  .interest-icon { font-size: 2.2rem; margin-bottom: 1rem; line-height: 1; }
+  .interest-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.85rem;
+  }
+  .interest-desc {
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    line-height: 1.9;
+    margin: 0 0 1.5rem;
+  }
+  .interest-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--amber);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: gap 0.2s;
+  }
+  .interest-link:hover { gap: 10px; color: #b06e2a; }
+  .interest-link--green { color: var(--green-soft); }
+  .interest-link--green:hover { color: #537a57; }
+  .interest-link--rose  { color: var(--rose-soft); }
+  .interest-link--rose:hover  { color: #9a5e56; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 5rem 2rem; }
+  .cta-box {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 3rem;
+    background: linear-gradient(135deg, #fff9f2, #fff4e6);
+    border-radius: 28px;
+    border: 1px solid rgba(193,127,58,0.15);
+    box-shadow: 0 12px 60px rgba(100,70,30,0.08);
+  }
+  .cta-icon  { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .cta-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+  }
+  .cta-desc {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    line-height: 1.85;
+    margin: 0 0 2rem;
+  }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .portrait-frame  { width: 200px; }
+    .interests-grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .numbers-grid    { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .story-block     { grid-template-columns: 36px 1fr; gap: 0 1.25rem; }
+    .numbers-grid    { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .cta-box         { padding: 2.5rem 1.5rem; }
+  }
+</style>

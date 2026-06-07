@@ -1,0 +1,476 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const services = [
+  {
+    icon: "📈",
+    color: "amber",
+    title: "投資策略諮詢",
+    desc: "以價值投資為核心，協助你建立屬於自己的選股邏輯與資產配置框架。不追熱點、不跟風，只幫你找到適合長期持有的好公司。",
+    items: ["個人投資組合健診", "選股邏輯建立", "風險承受度評估", "長期財務規劃討論"],
+  },
+  {
+    icon: "🌿",
+    color: "green",
+    title: "科學健身指導",
+    desc: "依據運動科學原理，為你量身設計訓練計畫。從動作矯正到週期化訓練，幫助你在最短時間內建立可持續的健身習慣。",
+    items: ["個人化訓練計畫設計", "動作技術指導", "營養搭配建議", "訓練進度追蹤"],
+  },
+  {
+    icon: "📚",
+    color: "rose",
+    title: "閱讀陪伴計畫",
+    desc: "為忙碌的現代人打造專屬閱讀清單，並提供深度導讀與讀書會主持服務。讓閱讀不再是孤獨的事，而是一場有人同行的思想旅程。",
+    items: ["個人化書單推薦", "每月深度導讀報告", "線上讀書會主持", "書摘與重點整理"],
+  },
+  {
+    icon: "✍️",
+    color: "amber",
+    title: "寫作課程與演講",
+    desc: "分享知識寫作、部落格經營與個人品牌建立的實戰經驗。無論你是想開始寫作的新手，還是希望突破瓶頸的創作者，都歡迎一起探討。",
+    items: ["知識寫作工作坊", "部落格從零開始課程", "企業內訓演講", "一對一寫作指導"],
+  },
+];
+---
+
+<PageLayout title="服務項目 — 曾淑婷的文學天地" description="投資策略諮詢、科學健身指導、閱讀陪伴計畫與寫作課程">
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="services-hero">
+    <div class="services-hero-bg"></div>
+    <div class="services-hero-inner">
+      <span class="section-label">服務項目</span>
+      <h1 class="services-hero-title">我能為你<em>做什麼</em></h1>
+      <p class="services-hero-desc">
+        多年來在投資、健身與文學三個領域的深耕，<br />
+        讓我有機會把這些積累轉化為對你有價值的服務。
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SERVICES GRID
+  ══════════════════════════════════ -->
+  <section class="services-section">
+    <div class="services-inner">
+      {services.map((s, i) => (
+        <div class={`service-card service-card--${s.color} ${i % 2 === 1 ? 'service-card--reverse' : ''}`}>
+          <div class="service-card-visual">
+            <div class={`service-icon-wrap service-icon-wrap--${s.color}`}>
+              <span class="service-icon">{s.icon}</span>
+            </div>
+            <div class={`service-number service-number--${s.color}`}>
+              0{i + 1}
+            </div>
+          </div>
+          <div class="service-card-content">
+            <h2 class="service-title">{s.title}</h2>
+            <p class="service-desc">{s.desc}</p>
+            <ul class="service-items">
+              {s.items.map(item => (
+                <li class="service-item">
+                  <span class={`service-dot service-dot--${s.color}`}></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class={`service-cta service-cta--${s.color}`}>
+              了解詳情 / 預約諮詢
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PROCESS
+  ══════════════════════════════════ -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-label">合作流程</span>
+        <h2 class="section-title">從相識到深度合作</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <h3 class="step-title">初步接洽</h3>
+          <p class="step-desc">填寫聯絡表單或直接寄信，簡單描述你的需求與目標。</p>
+        </div>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <h3 class="step-title">免費諮詢</h3>
+          <p class="step-desc">安排 30 分鐘線上通話，深入了解你的狀況與期望。</p>
+        </div>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <h3 class="step-title">方案規劃</h3>
+          <p class="step-desc">根據你的需求，提供客製化的服務方案與報價。</p>
+        </div>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <h3 class="step-title">開始合作</h3>
+          <p class="step-desc">確認細節後正式啟動，持續追蹤成效與調整方向。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       CTA
+  ══════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <span class="cta-icon" aria-hidden="true">🤝</span>
+      <h2 class="cta-title">準備好開始了嗎？</h2>
+      <p class="cta-desc">不確定哪項服務最適合你？歡迎直接聯絡，我們一起找出最好的方式。</p>
+      <div class="cta-buttons">
+        <a href="/contact" class="btn-primary">立即聯絡</a>
+        <a href="/about" class="btn-secondary">認識我</a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  /* ── 共用 ── */
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+  .section-header { margin-bottom: 3.5rem; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.8rem;
+    background: var(--amber);
+    color: #fff;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 16px rgba(193,127,58,0.3);
+    letter-spacing: 0.03em;
+  }
+  .btn-primary:hover {
+    background: #b06e2a;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(193,127,58,0.38);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.8rem;
+    border: 1.5px solid rgba(193,127,58,0.4);
+    color: var(--amber);
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .btn-secondary:hover {
+    background: var(--amber-pale);
+    border-color: var(--amber);
+    color: var(--amber);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO ── */
+  .services-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+  }
+  .services-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,168,76,0.1) 0%, transparent 60%),
+      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
+  }
+  .services-hero-inner {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .services-hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0.5rem 0 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .services-hero-title em {
+    font-style: normal;
+    color: var(--amber);
+    position: relative;
+  }
+  .services-hero-title em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber-light), transparent);
+    border-radius: 2px;
+    opacity: 0.5;
+  }
+  .services-hero-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 2;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* ── SERVICES ── */
+  .services-section { padding: 4rem 2rem; }
+  .services-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .service-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+    background: #fff;
+    border-radius: 24px;
+    padding: 2.5rem;
+    border: 1px solid rgba(193,127,58,0.1);
+    box-shadow: 0 4px 32px rgba(100,70,30,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 56px rgba(100,70,30,0.1);
+  }
+  .service-card--reverse {
+    grid-template-columns: 1fr 200px;
+  }
+  .service-card--reverse .service-card-visual {
+    order: 2;
+  }
+  .service-card--reverse .service-card-content {
+    order: 1;
+  }
+
+  .service-card-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .service-icon-wrap {
+    width: 100px; height: 100px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+  .service-icon-wrap--amber { background: var(--amber-pale); border: 1px solid rgba(193,127,58,0.2); }
+  .service-icon-wrap--green { background: var(--green-pale); border: 1px solid rgba(106,140,110,0.2); }
+  .service-icon-wrap--rose  { background: var(--rose-pale);  border: 1px solid rgba(181,114,106,0.2); }
+
+  .service-number {
+    font-family: 'Lora', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1;
+    opacity: 0.12;
+  }
+  .service-number--amber { color: var(--amber); }
+  .service-number--green { color: var(--green-soft); }
+  .service-number--rose  { color: var(--rose-soft); }
+
+  .service-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.85rem;
+    letter-spacing: 0.02em;
+  }
+  .service-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    line-height: 2;
+    font-weight: 300;
+    margin: 0 0 1.25rem;
+  }
+  .service-items {
+    list-style: none;
+    margin: 0 0 1.75rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .service-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .service-dot--amber { background: var(--amber); }
+  .service-dot--green { background: var(--green-soft); }
+  .service-dot--rose  { background: var(--rose-soft); }
+
+  .service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: gap 0.2s, color 0.2s;
+  }
+  .service-cta--amber { color: var(--amber); }
+  .service-cta--amber:hover { color: #b06e2a; gap: 10px; }
+  .service-cta--green { color: var(--green-soft); }
+  .service-cta--green:hover { color: #537a57; gap: 10px; }
+  .service-cta--rose  { color: var(--rose-soft); }
+  .service-cta--rose:hover  { color: #9a5e56; gap: 10px; }
+
+  /* ── PROCESS ── */
+  .process-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #f5ede0 0%, #ede3d4 100%);
+  }
+  .process-inner { max-width: 1000px; margin: 0 auto; }
+  .process-steps {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .process-step {
+    flex: 1;
+    background: rgba(255,255,255,0.7);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(193,127,58,0.12);
+    text-align: center;
+  }
+  .step-num {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--amber);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+  }
+  .step-desc {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .process-arrow {
+    font-size: 1.3rem;
+    color: rgba(193,127,58,0.35);
+    flex-shrink: 0;
+  }
+
+  /* ── CTA ── */
+  .cta-section { padding: 5rem 2rem; }
+  .cta-box {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 3rem;
+    background: linear-gradient(135deg, #fff9f2, #fff4e6);
+    border-radius: 28px;
+    border: 1px solid rgba(193,127,58,0.15);
+    box-shadow: 0 12px 60px rgba(100,70,30,0.08);
+  }
+  .cta-icon  { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .cta-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+  }
+  .cta-desc {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    line-height: 1.85;
+    margin: 0 0 2rem;
+  }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .service-card,
+    .service-card--reverse {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .service-card--reverse .service-card-visual,
+    .service-card--reverse .service-card-content { order: unset; }
+    .service-card-visual { flex-direction: row; justify-content: flex-start; }
+    .service-icon-wrap { width: 64px; height: 64px; font-size: 2rem; border-radius: 18px; }
+    .service-number { display: none; }
+    .process-steps { flex-direction: column; }
+    .process-arrow { transform: rotate(90deg); }
+    .process-step { width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .cta-box { padding: 2.5rem 1.5rem; }
+  }
+</style>
