@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
 
 const services = [
   {
@@ -35,20 +36,10 @@ const services = [
 
 <PageLayout title="服務項目 — 曾淑婷的文學天地" description="投資策略諮詢、科學健身指導、閱讀陪伴計畫與寫作課程">
 
-  <!-- ══════════════════════════════════
-       HERO
-  ══════════════════════════════════ -->
-  <section class="services-hero">
-    <div class="services-hero-bg"></div>
-    <div class="services-hero-inner">
-      <span class="section-label">服務項目</span>
-      <h1 class="services-hero-title">我能為你<em>做什麼</em></h1>
-      <p class="services-hero-desc">
-        多年來在投資、健身與文學三個領域的深耕，<br />
-        讓我有機會把這些積累轉化為對你有價值的服務。
-      </p>
-    </div>
-  </section>
+  <PageHero label="服務項目" titleHtml="我能為你<em>做什麼</em>">
+    多年來在投資、健身與文學三個領域的深耕，<br />
+    讓我有機會把這些積累轉化為對你有價值的服務。
+  </PageHero>
 
   <!-- ══════════════════════════════════
        SERVICES GRID
@@ -141,121 +132,6 @@ const services = [
 </PageLayout>
 
 <style>
-  /* ── 共用 ── */
-  .section-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--amber);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    color: var(--ink);
-    margin: 0 0 0.75rem;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-  }
-  .section-header { margin-bottom: 3.5rem; }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.75rem 1.8rem;
-    background: var(--amber);
-    color: #fff;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-    box-shadow: 0 4px 16px rgba(193,127,58,0.3);
-    letter-spacing: 0.03em;
-  }
-  .btn-primary:hover {
-    background: #b06e2a;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(193,127,58,0.38);
-  }
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.75rem 1.8rem;
-    border: 1.5px solid rgba(193,127,58,0.4);
-    color: var(--amber);
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: border-color 0.25s, background 0.25s, transform 0.2s;
-    letter-spacing: 0.03em;
-  }
-  .btn-secondary:hover {
-    background: var(--amber-pale);
-    border-color: var(--amber);
-    color: var(--amber);
-    transform: translateY(-2px);
-  }
-
-  /* ── HERO ── */
-  .services-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-  }
-  .services-hero-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,168,76,0.1) 0%, transparent 60%),
-      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
-  }
-  .services-hero-inner {
-    position: relative;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .services-hero-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.4;
-    margin: 0.5rem 0 1.25rem;
-    letter-spacing: 0.02em;
-  }
-  .services-hero-title em {
-    font-style: normal;
-    color: var(--amber);
-    position: relative;
-  }
-  .services-hero-title em::after {
-    content: '';
-    position: absolute;
-    bottom: 2px; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--amber-light), transparent);
-    border-radius: 2px;
-    opacity: 0.5;
-  }
-  .services-hero-desc {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.05rem;
-    color: var(--ink-muted);
-    line-height: 2;
-    font-weight: 300;
-    margin: 0;
-  }
-
   /* ── SERVICES ── */
   .services-section { padding: 4rem 2rem; }
   .services-inner {

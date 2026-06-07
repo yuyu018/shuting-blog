@@ -1,23 +1,14 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <PageLayout title="聯絡資訊 — 曾淑婷的文學天地" description="與曾淑婷聯絡，歡迎合作邀約、讀者交流或任何想法分享">
 
-  <!-- ══════════════════════════════════
-       HERO
-  ══════════════════════════════════ -->
-  <section class="contact-hero">
-    <div class="contact-hero-bg"></div>
-    <div class="contact-hero-inner">
-      <span class="section-label">聯絡資訊</span>
-      <h1 class="contact-hero-title">讓我們開始<em>對話</em></h1>
-      <p class="contact-hero-desc">
-        無論是合作邀約、讀者回饋，還是單純想聊聊書與投資，<br />
-        都歡迎寫信給我。每一封信我都會親自閱讀。
-      </p>
-    </div>
-  </section>
+  <PageHero label="聯絡資訊" titleHtml="讓我們開始<em>對話</em>">
+    無論是合作邀約、讀者回饋，還是單純想聊聊書與投資，<br />
+    都歡迎寫信給我。每一封信我都會親自閱讀。
+  </PageHero>
 
   <!-- ══════════════════════════════════
        MAIN CONTENT
@@ -67,7 +58,7 @@ import PageLayout from '../layouts/PageLayout.astro';
         <h2 class="form-title">傳送訊息</h2>
         <p class="form-subtitle">填寫以下表單，我會盡快與你聯繫。</p>
 
-        <form class="contact-form" name="contact" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="name" class="form-label">姓名</label>
@@ -102,6 +93,12 @@ import PageLayout from '../layouts/PageLayout.astro';
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </form>
+
+        <div class="form-success" hidden>
+          <span class="form-success-icon">✅</span>
+          <h3 class="form-success-title">訊息已送出！</h3>
+          <p class="form-success-desc">謝謝你的來信，我會盡快與你聯絡。</p>
+        </div>
       </div>
 
     </div>
@@ -110,69 +107,6 @@ import PageLayout from '../layouts/PageLayout.astro';
 </PageLayout>
 
 <style>
-  /* ── 共用 ── */
-  .section-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--amber);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  /* ── HERO ── */
-  .contact-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-  }
-  .contact-hero-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,168,76,0.1) 0%, transparent 60%),
-      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
-  }
-  .contact-hero-inner {
-    position: relative;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .contact-hero-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.4;
-    margin: 0.5rem 0 1.25rem;
-    letter-spacing: 0.02em;
-  }
-  .contact-hero-title em {
-    font-style: normal;
-    color: var(--amber);
-    position: relative;
-  }
-  .contact-hero-title em::after {
-    content: '';
-    position: absolute;
-    bottom: 2px; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--amber-light), transparent);
-    border-radius: 2px;
-    opacity: 0.5;
-  }
-  .contact-hero-desc {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.05rem;
-    color: var(--ink-muted);
-    line-height: 2;
-    font-weight: 300;
-    margin: 0;
-  }
-
   /* ── CONTACT SECTION ── */
   .contact-section {
     padding: 4rem 2rem 6rem;
@@ -357,4 +291,49 @@ import PageLayout from '../layouts/PageLayout.astro';
     .contact-form-wrap { padding: 1.75rem 1.25rem; }
     .form-submit { align-self: stretch; }
   }
+
+  .form-success {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .form-success-icon  { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .form-success-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+  }
+  .form-success-desc {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    margin: 0;
+  }
 </style>
+
+<script>
+  const form = document.querySelector('.contact-form') as HTMLFormElement | null;
+  const success = document.querySelector('.form-success') as HTMLElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = '傳送中…';
+
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    });
+
+    if (res.ok) {
+      form.hidden = true;
+      if (success) success.hidden = false;
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '送出訊息 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+      alert('傳送失敗，請稍後再試或直接寄信聯絡。');
+    }
+  });
+</script>
