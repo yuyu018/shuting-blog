@@ -32,6 +32,18 @@
     0 16px 32px rgba(var(--gray), 33%);
 }
 
+/* ── TILT GLOSS（全站互動光暈）── */
+.tilt-gloss {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 999;
+  background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,0.18) 0%, transparent 38%);
+}
+
 /* ── FILM GRAIN OVERLAY ── */
 .grain-overlay {
   position: fixed;
