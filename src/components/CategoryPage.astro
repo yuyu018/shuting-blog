@@ -1,0 +1,74 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from './PageHero.astro';
+import { byCategory, categoryMeta, type MockArticle } from '../data/articles';
+
+interface Props {
+  slug: MockArticle['categorySlug'];
+}
+const { slug } = Astro.props;
+const meta = categoryMeta[slug];
+const posts = byCategory(slug);
+---
+
+<PageLayout title={`${meta.title} — 曾淑婷的文學天地`} description={meta.desc}>
+
+  <PageHero label={meta.labelEn} labelZh="精選文章" titleHtml={meta.title}>
+    {meta.desc}
+  </PageHero>
+
+  <section class="cat-list-section">
+    <div class="section-inner">
+      <div class="cat-count">共 {posts.length} 篇文章</div>
+      {posts.map((a, i) => (
+        <article class="writing-row">
+          <span class="writing-num">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3 class="writing-title">{a.title}</h3>
+            <p class="writing-excerpt">{a.excerpt}</p>
+          </div>
+          <div class="writing-meta">
+            <span>{a.readTime}</span><span class="m-dot">・</span>
+            <span>{a.date}</span>
+          </div>
+        </article>
+      ))}
+
+      <div class="cat-more">
+        <p class="cat-more-text">更多文章即將發布，歡迎訂閱電子報，第一時間收到更新。</p>
+        <div class="cat-more-cta">
+          <a href="/#s-newsletter" class="btn-primary">訂閱電子報</a>
+          <a href="/blog" class="btn-secondary">瀏覽其他主題</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .cat-list-section { padding: 3.5rem 2rem 5rem; }
+  .cat-count {
+    font-size: 0.74rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.4rem;
+  }
+  .cat-more {
+    margin-top: 3.5rem;
+    text-align: center;
+  }
+  .cat-more-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    margin: 0 0 1.6rem;
+  }
+  .cat-more-cta {
+    display: flex;
+    gap: 0.9rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

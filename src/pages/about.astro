@@ -1,188 +1,112 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+
+const stories = [
+  {
+    num: '壹',
+    title: '我的起點',
+    paras: [
+      '從小就是個愛看書的孩子，課本以外的書永遠比課本讀得認真。那時候還不知道，這個習慣會成為日後所有事情的底色。',
+      '大學時期接觸投資，第一次感受到「讓錢替你工作」的震撼。但真正改變我的，不是某一次獲利，而是在巴菲特的股東信裡讀到的那句話——「時間是優秀企業的朋友，卻是平庸企業的敵人。」從那天起，我開始用長期的眼光看待生命中的每一件事。',
+    ],
+  },
+  {
+    num: '貳',
+    title: '身體的覺醒',
+    paras: [
+      '三十歲那年，長期伏案寫作讓身體發出警訊。我走進健身房，原本只想「運動一下」，卻意外發現重量訓練與價值投資竟如此相似——都講究長期堅持、漸進累積，以及對過程的誠實。',
+      '肌肉不會說謊，複利也不會。每一次訓練都是一筆存款，存進名為健康的帳戶。',
+    ],
+  },
+  {
+    num: '參',
+    title: '文字的歸宿',
+    paras: [
+      '寫作是我把投資的理性與閱讀的感性縫合起來的方式。這個部落格，是我與你分享思考的角落。',
+      '願每一個來到這裡的人，都能帶走一點溫暖與啟發。',
+    ],
+  },
+];
+
+const beliefs = [
+  { title: '長期主義', desc: '無論投資、健身還是閱讀，時間都是最好的朋友。' },
+  { title: '誠實記錄', desc: '只寫真實踐行過的事，絕不濫竽充數。' },
+  { title: '深度思考', desc: '慢下來，回到問題的本質。' },
+];
 ---
 
 <PageLayout title="關於我 — 曾淑婷的文學天地" description="認識曾淑婷：一個在投資、健身與文學三個領域深耕的創作者">
 
-  <!-- ══════════════════════════════════
-       HERO
-  ══════════════════════════════════ -->
+  <!-- HERO -->
   <section class="about-hero">
-    <div class="about-hero-bg"></div>
     <div class="about-hero-inner">
-      <div class="about-hero-portrait">
-        <div class="portrait-frame">🌸</div>
-        <span class="portrait-badge">作者 · 淑婷</span>
+      <div class="about-portrait">
+        <div class="portrait-paper">
+          <span class="portrait-char" aria-hidden="true">淑</span>
+          <span class="portrait-caption">作者・曾淑婷</span>
+        </div>
+        <span class="seal about-seal" aria-hidden="true">淑婷</span>
       </div>
       <div class="about-hero-text">
-        <span class="section-label">關於我</span>
-        <h1 class="about-hero-title">
-          曾淑婷<em>——</em><br />
-          用文字丈量<br />生命的寬度
-        </h1>
+        <span class="label-en">About the Author</span>
+        <h1 class="about-hero-title">曾淑婷——<br />用文字丈量生命的寬度</h1>
         <p class="about-hero-desc">
           投資人、健身愛好者、書蟲。相信複利不只發生在財富裡，也發生在每一天微小而持續的成長中。
         </p>
         <div class="about-tags">
-          <span class="about-tag">📈 價值投資</span>
-          <span class="about-tag">🏋️ 肌力訓練</span>
-          <span class="about-tag">📚 文學閱讀</span>
-          <span class="about-tag">✍️ 深度寫作</span>
-          <span class="about-tag">🧠 思維框架</span>
+          <span class="about-tag">價值投資</span>
+          <span class="about-tag">肌力訓練</span>
+          <span class="about-tag">文學閱讀</span>
+          <span class="about-tag">深度寫作</span>
+          <span class="about-tag">思維框架</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       STORY
-  ══════════════════════════════════ -->
+  <!-- STORY -->
   <section class="story-section">
     <div class="story-inner">
-
-      <div class="story-block">
-        <div class="story-icon-col">
-          <div class="story-icon">✦</div>
-          <div class="story-line"></div>
+      <span class="label-en">My Story</span>
+      <h2 class="section-title">三段故事</h2>
+      {stories.map(s => (
+        <div class="story-block">
+          <div class="story-side">
+            <span class="story-num">{s.num}</span>
+          </div>
+          <div class="story-main">
+            <h3 class="story-title">{s.title}</h3>
+            {s.paras.map(p => <p class="story-text">{p}</p>)}
+          </div>
         </div>
-        <div class="story-content">
-          <h2 class="story-title">我的起點</h2>
-          <p class="story-text">
-            從小就是個愛看書的孩子，課本以外的書永遠比課本讀得認真。那時候還不知道，這個習慣會成為日後所有事情的底色。
-          </p>
-          <p class="story-text">
-            大學時期接觸投資，第一次感受到「讓錢替你工作」的震撼。但真正改變我的，不是某一次獲利，而是在巴菲特的股東信裡讀到的那句話——<em>「時間是優秀企業的朋友，卻是平庸企業的敵人。」</em>從那天起，我開始用長期的眼光看待生命中的每一件事。
-          </p>
-        </div>
-      </div>
-
-      <div class="story-block">
-        <div class="story-icon-col">
-          <div class="story-icon">🌱</div>
-          <div class="story-line"></div>
-        </div>
-        <div class="story-content">
-          <h2 class="story-title">三個領域，一個信念</h2>
-          <p class="story-text">
-            投資教會我耐心與機率思維；健身教會我漸進與一致性；文學教會我換位思考與語言的精準。表面上看是三件毫無關聯的事，但我逐漸發現它們共享同一個內核：
-          </p>
-          <blockquote class="story-quote">
-            真正的成長，從來都不是爆發式的。它是每一天微小行動的複利，靜悄悄地，在你看不見的地方累積。
-          </blockquote>
-          <p class="story-text">
-            這個部落格，就是我把這個信念寫下來的地方。
-          </p>
-        </div>
-      </div>
-
-      <div class="story-block">
-        <div class="story-icon-col">
-          <div class="story-icon">📖</div>
-        </div>
-        <div class="story-content">
-          <h2 class="story-title">為什麼寫作</h2>
-          <p class="story-text">
-            寫作對我來說，是一種整理思緒的儀式。當我把一個想法寫成文字，它就從模糊變得清晰，從飄動變得有重量。每一篇文章，都是我與自己的一次對話，也是我想遞給你的一封信。
-          </p>
-          <p class="story-text">
-            如果你在這裡找到了一點共鳴，或者帶走了一個新的角度看事情，那就是這個部落格存在最好的理由。
-          </p>
-        </div>
-      </div>
-
+      ))}
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       NUMBERS
-  ══════════════════════════════════ -->
-  <section class="numbers-section">
-    <div class="section-inner">
-      <div class="numbers-grid">
-        <div class="number-item">
-          <span class="number-value">10+</span>
-          <span class="number-label">年投資經驗</span>
-        </div>
-        <div class="number-item">
-          <span class="number-value">300+</span>
-          <span class="number-label">本閱讀書目</span>
-        </div>
-        <div class="number-item">
-          <span class="number-value">5年</span>
-          <span class="number-label">規律訓練</span>
-        </div>
-        <div class="number-item">
-          <span class="number-value">100+</span>
-          <span class="number-label">篇原創文章</span>
-        </div>
+  <!-- BELIEFS -->
+  <section class="beliefs-band">
+    <div class="beliefs-inner">
+      <span class="label-en">Beliefs</span>
+      <h2 class="section-title">三個信念</h2>
+      <div class="beliefs-grid">
+        {beliefs.map(b => (
+          <div class="belief">
+            <h3 class="belief-title">{b.title}</h3>
+            <p class="belief-desc">{b.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       INTERESTS
-  ══════════════════════════════════ -->
-  <section class="interests-section">
-    <div class="section-inner">
-      <div class="section-header" style="text-align:center;">
-        <span class="section-label">我的三個世界</span>
-        <h2 class="section-title">深耕的領域</h2>
-      </div>
-      <div class="interests-grid">
-
-        <div class="interest-card">
-          <div class="interest-icon">📈</div>
-          <h3 class="interest-title">投資策略</h3>
-          <p class="interest-desc">
-            以價值投資為核心，研究企業護城河與長期競爭力。相信好的投資決策，本質上是對未來的深度理解，而非對市場的短期預測。
-          </p>
-          <a href="/blog/investment" class="interest-link">
-            閱讀投資文章
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-
-        <div class="interest-card interest-card--green">
-          <div class="interest-icon">🌿</div>
-          <h3 class="interest-title">科學健身</h3>
-          <p class="interest-desc">
-            以運動科學為基礎，實踐漸進超負荷與週期化訓練。身體是最誠實的鏡子，它從不說謊，也從不辜負你真正付出的努力。
-          </p>
-          <a href="/blog/fitness" class="interest-link interest-link--green">
-            閱讀健身文章
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-
-        <div class="interest-card interest-card--rose">
-          <div class="interest-icon">📚</div>
-          <h3 class="interest-title">知識文學</h3>
-          <p class="interest-desc">
-            橫跨古典文學、當代小說與知識讀物。閱讀不是逃避，而是以最低的成本，進入另一個人的整個人生，借用他的眼睛看世界。
-          </p>
-          <a href="/blog/literature" class="interest-link interest-link--rose">
-            閱讀文學文章
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       CTA
-  ══════════════════════════════════ -->
-  <section class="cta-section">
-    <div class="cta-box">
-      <span class="cta-icon" aria-hidden="true">💌</span>
-      <h2 class="cta-title">一起走這條路</h2>
-      <p class="cta-desc">
-        如果你也在尋找財富、健康與精神的平衡，歡迎訂閱電子報，或者直接來找我聊聊。
-      </p>
-      <div class="cta-buttons">
-        <a href="/contact" class="btn-primary">聯絡我</a>
-        <a href="/blog" class="btn-secondary">逛逛文章</a>
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="about-cta-inner">
+      <h2 class="about-cta-title">想進一步交流嗎？</h2>
+      <p class="about-cta-desc">無論是合作邀約還是讀者交流，都歡迎寫信給我。</p>
+      <div class="about-cta-btns">
+        <a href="/contact" class="btn-primary">與我聯絡</a>
+        <a href="/blog" class="btn-secondary">閱讀文章</a>
       </div>
     </div>
   </section>
@@ -190,296 +114,175 @@ import PageLayout from '../layouts/PageLayout.astro';
 </PageLayout>
 
 <style>
-  /* ── ABOUT HERO ── */
+  /* ── HERO ── */
   .about-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 6rem 2rem 5rem;
-  }
-  .about-hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 70% 80% at 80% 20%, rgba(232,168,76,0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 60% at 10% 90%, rgba(181,114,106,0.07) 0%, transparent 55%),
-      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--hairline);
   }
   .about-hero-inner {
-    position: relative;
-    max-width: 1100px;
+    max-width: 1060px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 5rem;
+    grid-template-columns: 270px 1fr;
+    gap: 4.5rem;
     align-items: center;
   }
-  .about-hero-portrait { position: relative; flex-shrink: 0; }
-  .portrait-frame {
-    width: 260px;
-    aspect-ratio: 3/4;
-    border-radius: 28px;
-    background: linear-gradient(135deg, var(--paper-deep), var(--paper-warm));
+  .about-portrait { position: relative; }
+  .portrait-paper {
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--hairline-strong);
+    background: var(--paper-blush);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(193,127,58,0.15);
-    box-shadow: 0 20px 70px rgba(100,70,30,0.13);
-    font-size: 5rem;
+    gap: 1.6rem;
+    padding: 1.5rem;
+    position: relative;
   }
-  .portrait-badge {
+  .portrait-paper::before {
+    content: '';
     position: absolute;
-    bottom: -14px; right: -14px;
-    background: var(--amber);
-    color: #fff;
+    inset: 8px;
+    border: 1px solid var(--hairline);
+    pointer-events: none;
+  }
+  .portrait-char {
     font-family: 'Noto Serif TC', serif;
-    font-size: 0.75rem;
+    font-size: 6rem;
     font-weight: 600;
-    padding: 0.5rem 1.1rem;
-    border-radius: 100px;
-    box-shadow: 0 4px 16px rgba(193,127,58,0.35);
-    letter-spacing: 0.04em;
+    color: var(--brown);
+    opacity: 0.5;
+    line-height: 1;
+  }
+  .portrait-caption {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.3em;
+  }
+  .about-seal {
+    position: absolute;
+    right: -10px;
+    bottom: -12px;
+    font-size: 0.92rem;
   }
   .about-hero-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.4;
-    margin: 0.5rem 0 1.25rem;
-    letter-spacing: 0.02em;
-  }
-  .about-hero-title em {
-    font-style: normal;
-    color: var(--amber);
-    opacity: 0.6;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+    margin: 0.4rem 0 1.2rem;
   }
   .about-hero-desc {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1.05rem;
+    font-size: 0.96rem;
     color: var(--ink-muted);
-    line-height: 2;
     font-weight: 300;
-    margin: 0 0 2rem;
+    line-height: 2.15;
+    letter-spacing: 0.06em;
+    margin: 0 0 1.8rem;
     max-width: 520px;
   }
-  .about-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .about-tag {
-    font-size: 0.78rem;
-    padding: 0.3rem 0.85rem;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.7);
+    font-size: 0.74rem;
+    padding: 0.32rem 0.9rem;
+    border: 1px solid var(--hairline-strong);
     color: var(--ink-soft);
-    border: 1px solid rgba(193,127,58,0.18);
-    font-weight: 500;
-    backdrop-filter: blur(4px);
+    letter-spacing: 0.14em;
+    border-radius: 2px;
   }
 
   /* ── STORY ── */
-  .story-section {
-    padding: 5rem 2rem;
-    background: #fff;
-  }
-  .story-inner {
-    max-width: 780px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .story-section { padding: 4.5rem 2rem; }
+  .story-inner { max-width: 820px; margin: 0 auto; }
   .story-block {
     display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 0 2rem;
+    grid-template-columns: 110px 1fr;
+    gap: 2.5rem;
+    padding: 2.4rem 0;
+    border-bottom: 1px solid var(--hairline);
   }
-  .story-icon-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4px;
-  }
-  .story-icon {
-    width: 40px; height: 40px;
-    border-radius: 12px;
-    background: var(--amber-pale);
-    border: 1px solid rgba(193,127,58,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-    color: var(--amber);
-    font-weight: 700;
-  }
-  .story-line {
-    flex: 1;
-    width: 1px;
-    background: linear-gradient(to bottom, rgba(193,127,58,0.2), transparent);
-    margin: 0.5rem 0;
-    min-height: 2.5rem;
-  }
-  .story-content {
-    padding-bottom: 3.5rem;
+  .story-block:last-child { border-bottom: none; }
+  .story-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--brown);
+    opacity: 0.6;
+    line-height: 1;
   }
   .story-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 0.3rem 0 1rem;
-    letter-spacing: 0.02em;
+    font-size: 1.15rem;
+    letter-spacing: 0.14em;
+    margin: 0 0 0.9rem;
   }
   .story-text {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1rem;
+    font-size: 0.92rem;
     color: var(--ink-muted);
-    line-height: 2;
     font-weight: 300;
-    margin: 0 0 1rem;
+    line-height: 2.2;
+    letter-spacing: 0.05em;
+    margin: 0 0 1.1rem;
   }
-  .story-text em {
-    font-style: italic;
-    color: var(--amber);
-    font-weight: 400;
-  }
-  .story-quote {
-    font-family: 'Lora', serif;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--ink-soft);
-    line-height: 1.85;
-    margin: 1.5rem 0;
-    padding: 1.2rem 1.5rem;
-    border-left: 3px solid var(--amber);
-    background: var(--amber-pale);
-    border-radius: 0 12px 12px 0;
-  }
+  .story-text:last-child { margin-bottom: 0; }
 
-  /* ── NUMBERS ── */
-  .numbers-section {
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #f5ede0 0%, #ede3d4 100%);
+  /* ── BELIEFS ── */
+  .beliefs-band {
+    padding: 4.5rem 2rem;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 9px,
+        rgba(90, 72, 50, 0.035) 9px,
+        rgba(90, 72, 50, 0.035) 10px
+      ),
+      var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
   }
-  .numbers-grid {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    text-align: center;
-  }
-  .number-item {}
-  .number-value {
-    display: block;
-    font-family: 'Lora', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--amber);
-    line-height: 1.1;
-    margin-bottom: 0.4rem;
-  }
-  .number-label {
-    font-size: 0.82rem;
-    color: var(--ink-muted);
-    letter-spacing: 0.06em;
-    font-weight: 500;
-  }
-
-  /* ── INTERESTS ── */
-  .interests-section {
-    padding: 5rem 2rem;
-  }
-  .interests-grid {
+  .beliefs-inner { max-width: 1060px; margin: 0 auto; }
+  .beliefs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 3rem;
+    margin-top: 2rem;
   }
-  .interest-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 2rem;
-    border: 1px solid rgba(193,127,58,0.12);
-    box-shadow: 0 4px 24px rgba(100,70,30,0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .belief {
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: 1.3rem;
   }
-  .interest-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 48px rgba(100,70,30,0.11);
+  .belief-title {
+    font-size: 1.02rem;
+    letter-spacing: 0.16em;
+    margin: 0 0 0.6rem;
   }
-  .interest-card--green { border-color: rgba(106,140,110,0.15); }
-  .interest-card--rose  { border-color: rgba(181,114,106,0.15); }
-  .interest-icon { font-size: 2.2rem; margin-bottom: 1rem; line-height: 1; }
-  .interest-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 0 0 0.85rem;
-  }
-  .interest-desc {
-    font-size: 0.875rem;
+  .belief-desc {
+    font-size: 0.83rem;
     color: var(--ink-muted);
-    line-height: 1.9;
-    margin: 0 0 1.5rem;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    margin: 0;
   }
-  .interest-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--amber);
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: gap 0.2s;
-  }
-  .interest-link:hover { gap: 10px; color: #b06e2a; }
-  .interest-link--green { color: var(--green-soft); }
-  .interest-link--green:hover { color: #537a57; }
-  .interest-link--rose  { color: var(--rose-soft); }
-  .interest-link--rose:hover  { color: #9a5e56; }
 
   /* ── CTA ── */
-  .cta-section { padding: 5rem 2rem; }
-  .cta-box {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 4rem 3rem;
-    background: linear-gradient(135deg, #fff9f2, #fff4e6);
-    border-radius: 28px;
-    border: 1px solid rgba(193,127,58,0.15);
-    box-shadow: 0 12px 60px rgba(100,70,30,0.08);
-  }
-  .cta-icon  { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
-  .cta-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 0 0 0.75rem;
-  }
-  .cta-desc {
-    font-size: 0.9rem;
+  .about-cta { padding: 5rem 2rem; text-align: center; }
+  .about-cta-inner { max-width: 520px; margin: 0 auto; }
+  .about-cta-title { font-size: 1.35rem; letter-spacing: 0.12em; margin: 0 0 0.8rem; }
+  .about-cta-desc {
+    font-size: 0.87rem;
     color: var(--ink-muted);
-    line-height: 1.85;
+    line-height: 2;
+    letter-spacing: 0.05em;
     margin: 0 0 2rem;
   }
-  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .about-cta-btns { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .about-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .portrait-frame  { width: 200px; }
-    .interests-grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-    .numbers-grid    { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .story-block     { grid-template-columns: 36px 1fr; gap: 0 1.25rem; }
-    .numbers-grid    { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .cta-box         { padding: 2.5rem 1.5rem; }
+  @media (max-width: 820px) {
+    .about-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .portrait-paper { max-width: 230px; }
+    .story-block { grid-template-columns: 1fr; gap: 0.8rem; padding: 2rem 0; }
+    .beliefs-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   }
 </style>

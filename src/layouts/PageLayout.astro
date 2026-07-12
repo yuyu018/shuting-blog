@@ -34,10 +34,11 @@ const { title, description } = Astro.props;
 
         const r0 = el.getBoundingClientRect();
         const area = r0.width * r0.height;
-        const rx = area > 50000 ? 20 : area > 5000 ? 10 : 4;
-        const ry = area > 50000 ? 26 : area > 5000 ? 13 : 5;
-        const tz = area > 50000 ? 14 : 6;
-        const hasLargeShadow = area > 5000;
+        const isWide = r0.width > 620; /* 全寬列表列只做微傾，避免暈眩 */
+        const rx = isWide ? 2 : area > 50000 ? 20 : area > 5000 ? 10 : 4;
+        const ry = isWide ? 2 : area > 50000 ? 26 : area > 5000 ? 13 : 5;
+        const tz = isWide ? 4 : area > 50000 ? 14 : 6;
+        const hasLargeShadow = !isWide && area > 5000;
 
         let gloss: HTMLSpanElement | null = null;
         if (area > 5000) {

@@ -1,62 +1,57 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import PageHero from '../components/PageHero.astro';
+
+const channels = [
+  {
+    num: '壹',
+    title: '電子郵件',
+    desc: '最直接的聯絡方式，通常在 2–3 個工作天內回覆。',
+    link: { href: 'mailto:hello@example.com', text: 'hello@example.com' },
+  },
+  {
+    num: '貳',
+    title: '合作邀約',
+    desc: '演講、課程、文章合作或品牌業配，歡迎附上相關資訊。',
+    link: { href: 'mailto:collab@example.com', text: 'collab@example.com' },
+  },
+  {
+    num: '參',
+    title: '社群媒體',
+    desc: '日常思考片段與閱讀紀錄，歡迎追蹤互動。',
+    link: { href: 'https://twitter.com/', text: '@shuting_writes' },
+  },
+];
 ---
 
 <PageLayout title="聯絡資訊 — 曾淑婷的文學天地" description="與曾淑婷聯絡，歡迎合作邀約、讀者交流或任何想法分享">
 
-  <PageHero label="聯絡資訊" titleHtml="讓我們開始<em>對話</em>">
-    無論是合作邀約、讀者回饋，還是單純想聊聊書與投資，<br />
-    都歡迎寫信給我。每一封信我都會親自閱讀。
+  <PageHero label="Get in Touch" labelZh="聯絡資訊" titleHtml="讓我們開始<em>對話</em>">
+    無論是合作邀約、讀者回饋，還是單純想聊聊書與投資，都歡迎寫信給我。每一封信我都會親自閱讀。
   </PageHero>
 
-  <!-- ══════════════════════════════════
-       MAIN CONTENT
-  ══════════════════════════════════ -->
   <section class="contact-section">
     <div class="contact-inner">
 
       <!-- 左：聯絡方式 -->
       <div class="contact-info">
-
-        <div class="info-card">
-          <div class="info-icon">✉️</div>
-          <div>
-            <h3 class="info-title">電子郵件</h3>
-            <p class="info-desc">最直接的聯絡方式，通常在 2–3 個工作天內回覆。</p>
-            <a href="mailto:hello@example.com" class="info-link">hello@example.com</a>
+        {channels.map(c => (
+          <div class="channel">
+            <span class="channel-num">{c.num}</span>
+            <div>
+              <h3 class="channel-title">{c.title}</h3>
+              <p class="channel-desc">{c.desc}</p>
+              <a href={c.link.href} class="channel-link" target={c.link.href.startsWith('http') ? '_blank' : undefined} rel={c.link.href.startsWith('http') ? 'noopener' : undefined}>{c.link.text}</a>
+            </div>
           </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">📝</div>
-          <div>
-            <h3 class="info-title">合作邀約</h3>
-            <p class="info-desc">演講、課程、文章合作或品牌業配，歡迎附上相關資訊。</p>
-            <a href="mailto:collab@example.com" class="info-link">collab@example.com</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">🐦</div>
-          <div>
-            <h3 class="info-title">社群媒體</h3>
-            <p class="info-desc">日常思考片段與閱讀紀錄，歡迎追蹤互動。</p>
-            <a href="https://twitter.com/" target="_blank" rel="noopener" class="info-link">@shuting_writes</a>
-          </div>
-        </div>
-
-        <div class="info-note">
-          <span class="info-note-icon">💡</span>
-          <p>若是讀者問題或文章回饋，也可以直接在文章底部留言，我同樣會看到。</p>
-        </div>
-
+        ))}
+        <p class="contact-note">若是讀者問題或文章回饋，也可以直接在文章底部留言，我同樣會看到。</p>
       </div>
 
       <!-- 右：表單 -->
       <div class="contact-form-wrap">
+        <span class="label-en">Send a Message</span>
         <h2 class="form-title">傳送訊息</h2>
-        <p class="form-subtitle">填寫以下表單，我會盡快與你聯繫。</p>
 
         <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="form-row">
@@ -72,7 +67,7 @@ import PageHero from '../components/PageHero.astro';
 
           <div class="form-group">
             <label for="subject" class="form-label">主旨</label>
-            <select id="subject" name="subject" class="form-select">
+            <select id="subject" name="subject" class="form-input form-select">
               <option value="">請選擇聯絡類型</option>
               <option value="reader">讀者回饋</option>
               <option value="collab">合作邀約</option>
@@ -85,20 +80,11 @@ import PageHero from '../components/PageHero.astro';
 
           <div class="form-group">
             <label for="message" class="form-label">訊息內容</label>
-            <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="請輸入你想說的話..." required></textarea>
+            <textarea id="message" name="message" class="form-input form-textarea" rows="6" placeholder="請輸入你想說的話……" required></textarea>
           </div>
 
-          <button type="submit" class="form-submit">
-            送出訊息
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
+          <button type="submit" class="btn-primary form-submit">送出訊息</button>
         </form>
-
-        <div class="form-success" hidden>
-          <span class="form-success-icon">✅</span>
-          <h3 class="form-success-title">訊息已送出！</h3>
-          <p class="form-success-desc">謝謝你的來信，我會盡快與你聯絡。</p>
-        </div>
       </div>
 
     </div>
@@ -107,233 +93,122 @@ import PageHero from '../components/PageHero.astro';
 </PageLayout>
 
 <style>
-  /* ── CONTACT SECTION ── */
-  .contact-section {
-    padding: 4rem 2rem 6rem;
-  }
+  .contact-section { padding: 3.5rem 2rem 5rem; }
   .contact-inner {
-    max-width: 1100px;
+    max-width: 1060px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.6fr;
+    grid-template-columns: 1fr 1.25fr;
     gap: 5rem;
     align-items: start;
   }
 
-  /* ── INFO CARDS ── */
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+  /* ── 聯絡方式 ── */
+  .channel {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1.4rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--hairline);
   }
-  .info-card {
-    display: flex;
-    gap: 1rem;
-    padding: 1.4rem 1.5rem;
-    background: #fff;
-    border-radius: 16px;
-    border: 1px solid rgba(193,127,58,0.1);
-    box-shadow: 0 2px 16px rgba(100,70,30,0.05);
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .info-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(100,70,30,0.09);
-  }
-  .info-icon {
-    font-size: 1.6rem;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .info-title {
+  .channel:first-child { padding-top: 0.5rem; }
+  .channel-num {
     font-family: 'Noto Serif TC', serif;
-    font-size: 0.95rem;
+    font-size: 1.7rem;
     font-weight: 600;
-    color: var(--ink);
-    margin: 0 0 0.35rem;
+    color: var(--brown);
+    opacity: 0.6;
+    line-height: 1.3;
   }
-  .info-desc {
+  .channel-title {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    margin: 0 0 0.45rem;
+  }
+  .channel-desc {
     font-size: 0.82rem;
     color: var(--ink-muted);
-    line-height: 1.7;
-    margin: 0 0 0.5rem;
+    line-height: 1.95;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.55rem;
   }
-  .info-link {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--amber);
+  .channel-link {
+    font-family: 'Lora', serif;
+    font-size: 0.84rem;
+    color: var(--brown);
+    letter-spacing: 0.05em;
     text-decoration: none;
-    transition: color 0.2s;
-    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--hairline-strong);
+    padding-bottom: 0.15rem;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .info-link:hover { color: #b06e2a; }
-
-  .info-note {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-    padding: 1rem 1.25rem;
-    background: var(--amber-pale);
-    border-radius: 12px;
-    border: 1px solid rgba(193,127,58,0.15);
-  }
-  .info-note-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-  .info-note p {
-    font-size: 0.82rem;
+  .channel-link:hover { color: var(--brown-deep); border-bottom-color: var(--brown); }
+  .contact-note {
+    font-size: 0.78rem;
     color: var(--ink-muted);
-    line-height: 1.7;
-    margin: 0;
+    line-height: 2;
+    letter-spacing: 0.05em;
+    margin: 1.6rem 0 0;
+    padding-left: 1rem;
+    border-left: 2px solid var(--hairline-strong);
   }
 
-  /* ── FORM ── */
-  .contact-form-wrap {
-    background: #fff;
-    border-radius: 24px;
-    padding: 2.5rem;
-    border: 1px solid rgba(193,127,58,0.1);
-    box-shadow: 0 8px 48px rgba(100,70,30,0.07);
-  }
+  /* ── 表單 ── */
   .form-title {
-    font-family: 'Noto Serif TC', serif;
     font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 0 0 0.4rem;
-  }
-  .form-subtitle {
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    margin: 0 0 2rem;
-    line-height: 1.6;
-  }
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    letter-spacing: 0.12em;
+    margin: 0.3rem 0 2rem;
   }
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 2rem;
   }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+  .form-group { margin-bottom: 1.8rem; }
   .form-label {
-    font-size: 0.8rem;
-    font-weight: 600;
+    display: block;
+    font-size: 0.76rem;
     color: var(--ink-soft);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
   }
-  .form-input,
-  .form-select,
-  .form-textarea {
-    padding: 0.7rem 1rem;
-    border: 1.5px solid rgba(193,127,58,0.2);
-    border-radius: 10px;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 0.875rem;
-    color: var(--ink);
-    background: var(--paper);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+  .form-input {
     width: 100%;
-    box-sizing: border-box;
-  }
-  .form-input:focus,
-  .form-select:focus,
-  .form-textarea:focus {
-    border-color: var(--amber);
-    box-shadow: 0 0 0 3px rgba(193,127,58,0.1);
-  }
-  .form-input::placeholder,
-  .form-textarea::placeholder { color: rgba(122,110,96,0.45); }
-  .form-select { appearance: none; cursor: pointer; }
-  .form-textarea { resize: vertical; min-height: 140px; line-height: 1.7; }
-
-  .form-submit {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0.85rem 2rem;
-    background: var(--amber);
-    color: #fff;
+    padding: 0.55rem 0.1rem;
     border: none;
-    border-radius: 100px;
+    border-bottom: 1px solid var(--hairline-strong);
+    background: transparent;
     font-family: 'Noto Sans TC', sans-serif;
     font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-    box-shadow: 0 4px 16px rgba(193,127,58,0.3);
-    letter-spacing: 0.03em;
-    align-self: flex-start;
-  }
-  .form-submit:hover {
-    background: #b06e2a;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(193,127,58,0.38);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .contact-inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  }
-  @media (max-width: 600px) {
-    .form-row { grid-template-columns: 1fr; }
-    .contact-form-wrap { padding: 1.75rem 1.25rem; }
-    .form-submit { align-self: stretch; }
-  }
-
-  .form-success {
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-  .form-success-icon  { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
-  .form-success-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
     color: var(--ink);
-    margin: 0 0 0.5rem;
+    letter-spacing: 0.05em;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.25s;
   }
-  .form-success-desc {
-    font-size: 0.9rem;
-    color: var(--ink-muted);
-    margin: 0;
+  .form-input:focus { border-bottom-color: var(--brown); }
+  .form-input::placeholder { color: rgba(138, 121, 98, 0.5); }
+  .form-select {
+    appearance: none;
+    cursor: pointer;
+    color: var(--ink-soft);
+  }
+  .form-textarea {
+    resize: vertical;
+    line-height: 1.9;
+    border: 1px solid var(--hairline-strong);
+    padding: 0.8rem 1rem;
+    margin-top: 0.2rem;
+  }
+  .form-textarea:focus { border-color: var(--brown); }
+  .form-submit {
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 820px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
   }
 </style>
-
-<script>
-  const form = document.querySelector('.contact-form') as HTMLFormElement | null;
-  const success = document.querySelector('.form-success') as HTMLElement | null;
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.form-submit') as HTMLButtonElement;
-    btn.disabled = true;
-    btn.textContent = '傳送中…';
-
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' },
-    });
-
-    if (res.ok) {
-      form.hidden = true;
-      if (success) success.hidden = false;
-    } else {
-      btn.disabled = false;
-      btn.innerHTML = '送出訊息 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
-      alert('傳送失敗，請稍後再試或直接寄信聯絡。');
-    }
-  });
-</script>

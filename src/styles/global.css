@@ -1,25 +1,39 @@
 @import "tailwindcss";
 
-/* ── DESIGN SYSTEM VARIABLES ── */
+/* ── DESIGN SYSTEM：文人編輯風 ── */
 :root {
-  --ink:         #2c2416;
-  --ink-soft:    #4a3f30;
-  --ink-muted:   #7a6e60;
-  --paper:       #faf6ef;
-  --paper-warm:  #f5ede0;
-  --paper-deep:  #ede3d4;
-  --amber:       #c17f3a;
-  --amber-light: #e8a84c;
-  --amber-pale:  #fdf0d8;
-  --green-soft:  #6a8c6e;
-  --green-pale:  #eef4ed;
-  --rose-soft:   #b5726a;
-  --rose-pale:   #fdf0ee;
-  --parchment:   #fdf9e4;
-  --dark-warm:   #1a150e;
-  --bronze:      #795130;
-  --sage-dark:   #2e3828;
-  --sage-mid:    #3d4e36;
+  /* 紙 */
+  --paper:       #f6f2e9;
+  --paper-warm:  #efe8d9;
+  --paper-deep:  #e8dfcc;
+  --paper-blush: #f2e5d6;
+
+  /* 墨 */
+  --ink:         #3a2f21;
+  --ink-soft:    #574835;
+  --ink-muted:   #8a7962;
+
+  /* 褐 */
+  --brown:       #7a5b3a;
+  --brown-deep:  #5c4227;
+  --brown-pale:  #efe5d4;
+
+  /* 印章紅 */
+  --seal-red:    #a63e2c;
+
+  /* 髮絲線 */
+  --hairline:        rgba(90, 72, 50, 0.16);
+  --hairline-strong: rgba(90, 72, 50, 0.34);
+
+  /* 輔助色（分類用，皆為墨調） */
+  --amber:       #8a6238;
+  --amber-light: #a8825c;
+  --amber-pale:  #efe5d4;
+  --green-soft:  #6e7b5e;
+  --green-pale:  #eaeee2;
+  --rose-soft:   #a05f50;
+  --rose-pale:   #f4e7e0;
+  --parchment:   #f6f2e9;
 
   /* Legacy vars for BlogPost layout */
   --gray: 96, 115, 159;
@@ -50,7 +64,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 40;
-  opacity: 0.045;
+  opacity: 0.035;
   background: url('/grain.svg') repeat;
   background-size: 200px 200px;
   animation: grain-anim 3s steps(4) infinite;
@@ -71,9 +85,8 @@ body {
   margin: 0;
   font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   background-color: var(--paper);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23faf6ef'/%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23e8ddd0' opacity='0.4'/%3E%3Ccircle cx='3' cy='3' r='0.6' fill='%23e8ddd0' opacity='0.3'/%3E%3C/svg%3E");
   color: var(--ink-soft);
-  line-height: 1.8;
+  line-height: 1.9;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-wrap: break-word;
@@ -83,23 +96,21 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Noto Serif TC', serif;
   color: var(--ink);
-  line-height: 1.4;
-  letter-spacing: 0.02em;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   margin: 0 0 0.5rem 0;
+  font-weight: 600;
 }
 
 a {
-  color: var(--amber);
-  text-decoration-color: rgba(193, 127, 58, 0.3);
-  transition: color 0.2s, text-decoration-color 0.2s;
+  color: var(--brown);
+  text-decoration: none;
+  transition: color 0.2s;
 }
-a:hover {
-  color: #b06e2a;
-  text-decoration-color: rgba(176, 110, 42, 0.6);
-}
+a:hover { color: var(--brown-deep); }
 
 img  { max-width: 100%; height: auto; display: block; }
-p    { line-height: 1.85; }
+p    { line-height: 1.95; }
 
 strong, b { font-weight: 700; }
 textarea  { width: 100%; font-size: 16px; }
@@ -117,98 +128,169 @@ table     { width: 100%; }
   border-width: 0;
 }
 
-/* ── SHARED LAYOUT ── */
-.section-inner { max-width: 1100px; margin: 0 auto; }
+/* ── 共用版式 ── */
+.section-inner { max-width: 1060px; margin: 0 auto; }
 
-.section-label {
-  display: inline-block;
-  font-size: 0.75rem;
+/* 英文眉標：THREE PILLARS 之類 */
+.label-en {
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
   font-weight: 500;
-  color: var(--amber);
-  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.6rem;
 }
 
+/* 中文區塊標題 */
 .section-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
   font-weight: 600;
   color: var(--ink);
   margin: 0 0 0.75rem;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
 }
 
 .section-subtitle {
   font-family: 'Noto Serif TC', serif;
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: var(--ink-muted);
   font-weight: 300;
-  line-height: 1.9;
+  line-height: 2;
   max-width: 520px;
   margin: 0;
 }
 
-.section-header { margin-bottom: 3.5rem; }
+/* 舊版相容 */
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.28em;
+  margin-bottom: 0.75rem;
+}
 
-.section-divider {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
+/* ── 印章 ── */
+.seal {
+  display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  background: var(--seal-red);
+  color: #f6efdf;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  padding: 0.5em 0.32em;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(120, 40, 20, 0.25);
+  user-select: none;
 }
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(193,127,58,0.25), transparent);
-}
-.divider-ornament { font-size: 1.1rem; opacity: 0.5; }
 
-/* ── SHARED BUTTONS ── */
+/* ── 按鈕：方正編輯風 ── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 0.75rem 1.8rem;
-  background: var(--amber);
-  color: #fff;
-  border-radius: 100px;
-  font-size: 0.9rem;
+  padding: 0.72rem 2rem;
+  background: var(--brown);
+  color: #f6f0e4;
+  border-radius: 2px;
+  font-size: 0.88rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-  box-shadow: 0 4px 16px rgba(193,127,58,0.3);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.12em;
+  border: 1px solid var(--brown);
+  transition: background 0.25s, border-color 0.25s;
 }
 .btn-primary:hover {
-  background: #b06e2a;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(193,127,58,0.38);
+  background: var(--brown-deep);
+  border-color: var(--brown-deep);
+  color: #f6f0e4;
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 0.75rem 1.8rem;
-  border: 1.5px solid rgba(193,127,58,0.4);
-  color: var(--amber);
-  border-radius: 100px;
-  font-size: 0.9rem;
+  padding: 0.72rem 2rem;
+  border: 1px solid var(--hairline-strong);
+  color: var(--ink-soft);
+  border-radius: 2px;
+  font-size: 0.88rem;
   font-weight: 500;
   text-decoration: none;
-  transition: border-color 0.25s, background 0.25s, transform 0.2s;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.12em;
+  background: transparent;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
 }
 .btn-secondary:hover {
-  background: var(--amber-pale);
-  border-color: var(--amber);
-  color: var(--amber);
-  transform: translateY(-2px);
+  border-color: var(--brown);
+  color: var(--brown-deep);
+  background: rgba(122, 91, 58, 0.05);
+}
+
+/* ── 文章清單列（首頁與各分類頁共用）── */
+.writing-row {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1.6rem 0.5rem;
+  border-top: 1px solid var(--hairline);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.25s;
+}
+.writing-row:last-of-type { border-bottom: 1px solid var(--hairline); }
+.writing-row:hover { background: rgba(122, 91, 58, 0.045); }
+.writing-num {
+  font-family: 'Lora', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--brown);
+  opacity: 0.55;
+  line-height: 1;
+}
+.writing-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.04em;
+  line-height: 1.65;
+  transition: color 0.2s;
+}
+.writing-row:hover .writing-title { color: var(--brown-deep); }
+.writing-excerpt {
+  font-size: 0.83rem;
+  color: var(--ink-muted);
+  margin: 0;
+  line-height: 1.9;
+}
+.writing-meta {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.writing-meta .m-dot { opacity: 0.45; }
+.writing-meta .m-cat { color: var(--brown); font-weight: 500; }
+
+@media (max-width: 720px) {
+  .writing-row { grid-template-columns: 48px 1fr; }
+  .writing-meta { grid-column: 2; margin-top: 0.35rem; }
 }
 
 /* ── BLOG CONTENT ── */
@@ -216,23 +298,24 @@ table     { width: 100%; }
 
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
+  background-color: var(--paper-deep);
   border-radius: 2px;
 }
-pre { padding: 1.5em; border-radius: 8px; }
+pre { padding: 1.5em; border-radius: 4px; }
 pre > code { all: unset; }
 
 blockquote {
-  border-left: 4px solid var(--amber);
+  border-left: 3px solid var(--brown);
   padding: 0 0 0 20px;
   margin: 0;
-  font-size: 1.333em;
+  font-size: 1.25em;
+  font-family: 'Noto Serif TC', serif;
 }
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 1px solid var(--hairline);
 }
 
 @media (max-width: 720px) {
-  body { font-size: 18px; }
+  body { font-size: 17px; }
 }

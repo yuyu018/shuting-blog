@@ -1,13 +1,12 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
 ---
 
 <header class="navbar">
   <div class="nav-inner">
     <!-- Logo -->
     <a href="/" class="nav-logo">
-      曾淑婷<span class="nav-logo-dot"></span>文學天地
+      曾淑婷<span class="nav-logo-dot">・</span>文學天地
     </a>
 
     <!-- Desktop Nav -->
@@ -20,25 +19,17 @@ import { SITE_TITLE } from '../consts';
         <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             精選文章
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="dropdown-menu" role="menu">
-            <a href="/blog/investment" role="menuitem">
-              <span class="dropdown-dot" style="background:#c17f3a;"></span>
-              投資策略分析
-            </a>
-            <a href="/blog/fitness" role="menuitem">
-              <span class="dropdown-dot" style="background:#6a8c6e;"></span>
-              科學健身指導
-            </a>
-            <a href="/blog/literature" role="menuitem">
-              <span class="dropdown-dot" style="background:#b5726a;"></span>
-              知識文學分享
-            </a>
+            <a href="/blog/investment" role="menuitem">投資策略分析</a>
+            <a href="/blog/fitness" role="menuitem">科學健身指導</a>
+            <a href="/blog/literature" role="menuitem">知識文學分享</a>
+            <a href="/blog" role="menuitem" class="dropdown-all">所有文章 →</a>
           </div>
         </li>
 
@@ -59,9 +50,10 @@ import { SITE_TITLE } from '../consts';
       <li><a href="/">首頁</a></li>
       <li><a href="/services">服務項目</a></li>
       <li class="mobile-group-label">精選文章</li>
-      <li><a href="/blog/investment" class="mobile-sub">📈 投資策略分析</a></li>
-      <li><a href="/blog/fitness" class="mobile-sub">🌿 科學健身指導</a></li>
-      <li><a href="/blog/literature" class="mobile-sub">📚 知識文學分享</a></li>
+      <li><a href="/blog/investment" class="mobile-sub">投資策略分析</a></li>
+      <li><a href="/blog/fitness" class="mobile-sub">科學健身指導</a></li>
+      <li><a href="/blog/literature" class="mobile-sub">知識文學分享</a></li>
+      <li><a href="/blog" class="mobile-sub">所有文章</a></li>
       <li><a href="/about">關於我們</a></li>
       <li><a href="/contact">聯絡資訊</a></li>
     </ul>
@@ -69,28 +61,22 @@ import { SITE_TITLE } from '../consts';
 </header>
 
 <style>
-  /* ── NAVBAR SHELL ── */
   .navbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(250, 246, 239, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(193, 127, 58, 0.15);
-    transition: box-shadow 0.3s ease;
+    background: rgba(246, 242, 233, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   }
-  .navbar.scrolled {
-    box-shadow: 0 4px 28px rgba(150, 100, 50, 0.09);
-  }
 
-  /* ── INNER LAYOUT ── */
   .nav-inner {
-    max-width: 1100px;
+    max-width: 1160px;
     margin: 0 auto;
     padding: 0 2rem;
-    height: 64px;
+    height: 62px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -98,144 +84,113 @@ import { SITE_TITLE } from '../consts';
 
   /* ── LOGO ── */
   .nav-logo {
-    font-family: 'Noto Serif TC', 'Songti TC', serif;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    font-size: 1.02rem;
     color: var(--ink);
     text-decoration: none;
-    letter-spacing: 0.04em;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    transition: color 0.25s;
+    letter-spacing: 0.12em;
     white-space: nowrap;
+    transition: color 0.25s;
   }
-  .nav-logo:hover { color: var(--amber); }
-  .nav-logo-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: var(--amber);
-    border-radius: 50%;
-    margin: 0 5px 2px;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
-  }
-  .nav-logo:hover .nav-logo-dot {
-    transform: scale(1.5);
-  }
+  .nav-logo:hover { color: var(--brown); }
+  .nav-logo-dot { color: var(--seal-red); margin: 0 1px; }
 
-  /* ── DESKTOP NAV LIST ── */
+  /* ── DESKTOP NAV ── */
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 0.15rem;
+    gap: 1.9rem;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  /* nav items (covers both <a> from HeaderLink and dropdown button) */
   .nav-links :global(a.nav-item),
   .nav-dropdown-btn {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--ink-muted);
-    text-decoration: none;
-    padding: 0.4rem 0.9rem;
-    border-radius: 9px;
-    transition: color 0.2s ease, background 0.2s ease;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.025em;
-    font-family: inherit;
-    line-height: 1;
-  }
-  .nav-links :global(a.nav-item:hover),
-  .nav-links :global(a.nav-item.active),
-  .nav-dropdown-btn:hover {
-    color: var(--amber);
-    background: rgba(193, 127, 58, 0.08);
-  }
-  /* Astro HeaderLink active class */
-  .nav-links :global(a[aria-current="page"]) {
-    color: var(--amber);
-    background: rgba(193, 127, 58, 0.08);
-  }
-
-  /* ── DROPDOWN ── */
-  .nav-dropdown {
-    position: relative;
-  }
-  .nav-dropdown-btn {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .nav-dropdown-btn svg {
-    transition: transform 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
-    opacity: 0.7;
-  }
-  .nav-dropdown:hover .nav-dropdown-btn svg,
-  .nav-dropdown:focus-within .nav-dropdown-btn svg {
-    transform: rotate(180deg);
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%) translateY(-6px) scaleY(0.94);
-    transform-origin: top center;
-    opacity: 0;
-    pointer-events: none;
-    min-width: 172px;
-    background: rgba(253, 250, 244, 0.97);
-    border: 1px solid rgba(193, 127, 58, 0.18);
-    border-radius: 16px;
-    box-shadow:
-      0 4px 6px rgba(100, 70, 30, 0.04),
-      0 16px 48px rgba(100, 70, 30, 0.12);
-    padding: 0.55rem;
-    transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.34, 1.1, 0.64, 1);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-  .nav-dropdown:hover .dropdown-menu,
-  .nav-dropdown:focus-within .dropdown-menu {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scaleY(1);
-    pointer-events: auto;
-  }
-
-  .dropdown-menu a {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 0.55rem 0.9rem;
-    border-radius: 9px;
     font-size: 0.84rem;
     font-weight: 500;
     color: var(--ink-soft);
     text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.18s ease, color 0.18s ease;
-    letter-spacing: 0.02em;
+    padding: 0.3rem 0;
+    letter-spacing: 0.14em;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .dropdown-menu a:hover {
-    background: var(--amber-pale);
-    color: var(--amber);
+  .nav-links :global(a.nav-item:hover),
+  .nav-dropdown-btn:hover {
+    color: var(--brown-deep);
+    border-bottom-color: var(--brown);
   }
-  .dropdown-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    opacity: 0.75;
+  .nav-links :global(a[aria-current="page"]) {
+    color: var(--brown-deep);
+    border-bottom-color: var(--seal-red);
   }
 
-  /* ── HAMBURGER (mobile) ── */
+  /* ── DROPDOWN ── */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .nav-dropdown-btn svg {
+    transition: transform 0.25s ease;
+    opacity: 0.55;
+  }
+  .nav-dropdown:hover .nav-dropdown-btn svg,
+  .nav-dropdown:focus-within .nav-dropdown-btn svg { transform: rotate(180deg); }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    opacity: 0;
+    pointer-events: none;
+    min-width: 168px;
+    background: var(--paper);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 2px;
+    box-shadow: 0 12px 36px rgba(70, 50, 25, 0.14);
+    padding: 0.45rem 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+  .dropdown-menu a {
+    display: block;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    transition: background 0.18s, color 0.18s;
+  }
+  .dropdown-menu a:hover {
+    background: var(--brown-pale);
+    color: var(--brown-deep);
+  }
+  .dropdown-menu a.dropdown-all {
+    border-top: 1px solid var(--hairline);
+    margin-top: 0.35rem;
+    padding-top: 0.7rem;
+    color: var(--brown);
+    font-size: 0.76rem;
+  }
+
+  /* ── HAMBURGER ── */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -248,16 +203,12 @@ import { SITE_TITLE } from '../consts';
     background: transparent;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background 0.2s;
   }
-  .hamburger:hover { background: rgba(193, 127, 58, 0.08); }
   .hamburger span {
     display: block;
     width: 20px;
     height: 1.5px;
     background: var(--ink-soft);
-    border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform-origin: center;
   }
@@ -271,51 +222,45 @@ import { SITE_TITLE } from '../consts';
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(250, 246, 239, 0.97);
-    border-top: 1px solid rgba(193, 127, 58, 0.1);
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
   }
-  .mobile-menu.open {
-    max-height: 480px;
-  }
+  .mobile-menu.open { max-height: 520px; }
   .mobile-links {
     list-style: none;
     margin: 0;
     padding: 0.75rem 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
   }
   .mobile-links a {
     display: block;
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.5rem;
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--ink-soft);
     text-decoration: none;
-    border-radius: 9px;
-    transition: background 0.18s, color 0.18s;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid var(--hairline);
+    transition: color 0.18s;
   }
-  .mobile-links a:hover {
-    background: var(--amber-pale);
-    color: var(--amber);
-  }
+  .mobile-links li:last-child a { border-bottom: none; }
+  .mobile-links a:hover { color: var(--brown-deep); }
   .mobile-links a.mobile-sub {
-    padding-left: 1.4rem;
+    padding-left: 1.3rem;
     font-size: 0.84rem;
     color: var(--ink-muted);
   }
   .mobile-group-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-family: 'Lora', serif;
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: rgba(122, 110, 96, 0.5);
-    padding: 0.75rem 0.75rem 0.25rem;
-    margin-top: 0.25rem;
+    color: var(--ink-muted);
+    padding: 0.85rem 0.5rem 0.3rem;
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
@@ -324,11 +269,7 @@ import { SITE_TITLE } from '../consts';
 </style>
 
 <script>
-  // ── Scroll shadow ──
   const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    navbar?.classList.toggle('scrolled', window.scrollY > 8);
-  }, { passive: true });
 
   // ── Mobile hamburger toggle ──
   const hamburger = document.getElementById('hamburger');
@@ -341,7 +282,6 @@ import { SITE_TITLE } from '../consts';
     mobileMenu?.setAttribute('aria-hidden', String(!isOpen));
   });
 
-  // Close mobile menu on outside click
   document.addEventListener('click', (e) => {
     if (!navbar?.contains(e.target as Node)) {
       hamburger?.classList.remove('open');
@@ -351,7 +291,6 @@ import { SITE_TITLE } from '../consts';
     }
   });
 
-  // Close mobile menu on nav link click
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger?.classList.remove('open');

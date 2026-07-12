@@ -1,15 +1,16 @@
 ---
 interface Props {
-  label: string;
+  label: string;      /* 英文眉標，如 OUR SERVICES */
+  labelZh?: string;   /* 中文小標（可省略） */
   titleHtml: string;
 }
-const { label, titleHtml } = Astro.props;
+const { label, labelZh, titleHtml } = Astro.props;
 ---
 
 <section class="page-hero">
-  <div class="page-hero-bg"></div>
   <div class="page-hero-inner">
-    <span class="section-label">{label}</span>
+    <span class="label-en">{label}</span>
+    {labelZh && <span class="page-hero-zh">{labelZh}</span>}
     <h1 class="page-hero-title" set:html={titleHtml} />
     <p class="page-hero-desc"><slot /></p>
   </div>
@@ -17,53 +18,42 @@ const { label, titleHtml } = Astro.props;
 
 <style>
   .page-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-  }
-  .page-hero-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,168,76,0.1) 0%, transparent 60%),
-      linear-gradient(160deg, #fdf8f2 0%, #f7ede0 50%, #faf5ec 100%);
+    padding: 5rem 2rem 3.5rem;
+    border-bottom: 1px solid var(--hairline);
+    background: var(--paper);
   }
   .page-hero-inner {
-    position: relative;
-    max-width: 640px;
+    max-width: 1060px;
     margin: 0 auto;
+  }
+  .page-hero-zh {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--brown);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
   }
   .page-hero-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
     font-weight: 600;
     color: var(--ink);
-    line-height: 1.4;
-    margin: 0.5rem 0 1.25rem;
-    letter-spacing: 0.02em;
+    line-height: 1.5;
+    margin: 0.4rem 0 1.2rem;
+    letter-spacing: 0.1em;
   }
   .page-hero-title :global(em) {
     font-style: normal;
-    color: var(--amber);
-    position: relative;
-  }
-  .page-hero-title :global(em)::after {
-    content: '';
-    position: absolute;
-    bottom: 2px; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--amber-light), transparent);
-    border-radius: 2px;
-    opacity: 0.5;
+    color: var(--brown);
   }
   .page-hero-desc {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     color: var(--ink-muted);
-    line-height: 2;
+    line-height: 2.1;
     font-weight: 300;
     margin: 0;
+    letter-spacing: 0.06em;
+    max-width: 560px;
   }
 </style>
